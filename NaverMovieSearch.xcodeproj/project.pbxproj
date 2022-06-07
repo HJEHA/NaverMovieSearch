@@ -58,16 +58,72 @@
 		08A4754C284F566A00C0FEFF /* NaverMovieSearch */ = {
 			isa = PBXGroup;
 			children = (
-				08A4754D284F566A00C0FEFF /* AppDelegate.swift */,
-				08A4754F284F566A00C0FEFF /* SceneDelegate.swift */,
-				08A47551284F566A00C0FEFF /* ViewController.swift */,
-				08A47553284F566A00C0FEFF /* Main.storyboard */,
-				08A47559284F566C00C0FEFF /* Assets.xcassets */,
-				08A4755B284F566C00C0FEFF /* LaunchScreen.storyboard */,
-				08A4755E284F566C00C0FEFF /* Info.plist */,
-				08A47556284F566A00C0FEFF /* NaverMovieSearch.xcdatamodeld */,
+				08A47566284F575700C0FEFF /* Presentation */,
+				08A47565284F573000C0FEFF /* Resource */,
+				08A47564284F571A00C0FEFF /* Application */,
 			);
 			path = NaverMovieSearch;
+			sourceTree = "<group>";
+		};
+		08A47564284F571A00C0FEFF /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				08A4754F284F566A00C0FEFF /* SceneDelegate.swift */,
+				08A4754D284F566A00C0FEFF /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		08A47565284F573000C0FEFF /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				08A4755B284F566C00C0FEFF /* LaunchScreen.storyboard */,
+				08A47556284F566A00C0FEFF /* NaverMovieSearch.xcdatamodeld */,
+				08A4755E284F566C00C0FEFF /* Info.plist */,
+				08A47559284F566C00C0FEFF /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		08A47566284F575700C0FEFF /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				08A47567284F575F00C0FEFF /* Scene */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		08A47567284F575F00C0FEFF /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				08A47568284F576800C0FEFF /* MovieSearchList */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		08A47568284F576800C0FEFF /* MovieSearchList */ = {
+			isa = PBXGroup;
+			children = (
+				08A4756A284F578100C0FEFF /* ViewModel */,
+				08A47569284F577C00C0FEFF /* View */,
+			);
+			path = MovieSearchList;
+			sourceTree = "<group>";
+		};
+		08A47569284F577C00C0FEFF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				08A47551284F566A00C0FEFF /* ViewController.swift */,
+				08A47553284F566A00C0FEFF /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		08A4756A284F578100C0FEFF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,7 +351,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XXJA3T7PA3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NaverMovieSearch/Info.plist;
+				INFOPLIST_FILE = NaverMovieSearch/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -323,7 +379,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XXJA3T7PA3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NaverMovieSearch/Info.plist;
+				INFOPLIST_FILE = NaverMovieSearch/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
