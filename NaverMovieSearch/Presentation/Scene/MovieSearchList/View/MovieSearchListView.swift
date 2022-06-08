@@ -34,6 +34,15 @@ final class MovieSearchListView: UIView {
         return button
     }()
     
+    lazy var movieListCollectionView: UICollectionView = {
+        let listConfiguration = UICollectionLayoutListConfiguration(appearance: .plain)
+        let listLayout = UICollectionViewCompositionalLayout.list(using: listConfiguration)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: listLayout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return collectionView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
@@ -59,6 +68,7 @@ final class MovieSearchListView: UIView {
     private func configureSubviews() {
         addSubview(titleLabel)
         addSubview(favoriteButton)
+        addSubview(movieListCollectionView)
     }
     
     private func configureSubViewsConstraint() {
@@ -71,6 +81,13 @@ final class MovieSearchListView: UIView {
             favoriteButton.heightAnchor.constraint(equalTo: titleLabel.heightAnchor),
             favoriteButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
             favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+        ])
+        
+        NSLayoutConstraint.activate([
+            movieListCollectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+            movieListCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            movieListCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            movieListCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
 }
