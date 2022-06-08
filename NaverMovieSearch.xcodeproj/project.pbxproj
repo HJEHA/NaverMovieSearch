@@ -14,6 +14,7 @@
 		08A47558284F566A00C0FEFF /* NaverMovieSearch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 08A47556284F566A00C0FEFF /* NaverMovieSearch.xcdatamodeld */; };
 		08A4755A284F566C00C0FEFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08A47559284F566C00C0FEFF /* Assets.xcassets */; };
 		08A4755D284F566C00C0FEFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08A4755B284F566C00C0FEFF /* LaunchScreen.storyboard */; };
+		08A4756F284F59A700C0FEFF /* MovieSearchResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4756E284F59A700C0FEFF /* MovieSearchResponseDTO+Mapping.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		08A47559284F566C00C0FEFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08A4755C284F566C00C0FEFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		08A4755E284F566C00C0FEFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08A4756E284F59A700C0FEFF /* MovieSearchResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieSearchResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		08A4754C284F566A00C0FEFF /* NaverMovieSearch */ = {
 			isa = PBXGroup;
 			children = (
+				08A4756B284F591000C0FEFF /* Data */,
 				08A47566284F575700C0FEFF /* Presentation */,
 				08A47565284F573000C0FEFF /* Resource */,
 				08A47564284F571A00C0FEFF /* Application */,
@@ -124,6 +127,22 @@
 			children = (
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		08A4756B284F591000C0FEFF /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				08A4756C284F591600C0FEFF /* NetworkDTO */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		08A4756C284F591600C0FEFF /* NetworkDTO */ = {
+			isa = PBXGroup;
+			children = (
+				08A4756E284F59A700C0FEFF /* MovieSearchResponseDTO+Mapping.swift */,
+			);
+			path = NetworkDTO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08A47552284F566A00C0FEFF /* ViewController.swift in Sources */,
+				08A4756F284F59A700C0FEFF /* MovieSearchResponseDTO+Mapping.swift in Sources */,
 				08A4754E284F566A00C0FEFF /* AppDelegate.swift in Sources */,
 				08A47550284F566A00C0FEFF /* SceneDelegate.swift in Sources */,
 				08A47558284F566A00C0FEFF /* NaverMovieSearch.xcdatamodeld in Sources */,
