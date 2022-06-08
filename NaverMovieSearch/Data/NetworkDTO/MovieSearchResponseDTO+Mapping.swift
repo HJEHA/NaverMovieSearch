@@ -54,17 +54,26 @@ extension MovieSearchResponseDTO {
 extension MovieSearchResponseDTO {
     func toDomain() -> [MovieInformation] {
         return movieInformations.map {
-            let actors = $0.actor.components(separatedBy: "|").filter { $0 != "" }
+            let director = $0.director.componentsNotEmpty(separatedBy: "|")
+            let actors = $0.actor.componentsNotEmpty(separatedBy: "|")
             
             return MovieInformation(
                 title: $0.title,
                 posterURL: $0.image,
                 pagelink: $0.link,
-                director: $0.director,
+                director: director,
                 actors: actors,
                 userRating: $0.userRating,
                 isFavorite: false
             )
         }
+    }
+}
+
+// MARK: - Private Extension
+
+private extension String {
+    func componentsNotEmpty(separatedBy: String) -> [String] {
+        return self.components(separatedBy: separatedBy).filter { $0 != "" }
     }
 }
