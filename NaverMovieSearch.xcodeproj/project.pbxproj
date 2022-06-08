@@ -15,6 +15,9 @@
 		08A4755A284F566C00C0FEFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08A47559284F566C00C0FEFF /* Assets.xcassets */; };
 		08A4755D284F566C00C0FEFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08A4755B284F566C00C0FEFF /* LaunchScreen.storyboard */; };
 		08A4756F284F59A700C0FEFF /* MovieSearchResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4756E284F59A700C0FEFF /* MovieSearchResponseDTO+Mapping.swift */; };
+		08B3A5DB28503FD4007858B9 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 08B3A5DA28503FD4007858B9 /* RxCocoa */; };
+		08B3A5DD28503FD4007858B9 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 08B3A5DC28503FD4007858B9 /* RxRelay */; };
+		08B3A5DF28503FD5007858B9 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 08B3A5DE28503FD5007858B9 /* RxSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08B3A5DF28503FD5007858B9 /* RxSwift in Frameworks */,
+				08B3A5DD28503FD4007858B9 /* RxRelay in Frameworks */,
+				08B3A5DB28503FD4007858B9 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +167,11 @@
 			dependencies = (
 			);
 			name = NaverMovieSearch;
+			packageProductDependencies = (
+				08B3A5DA28503FD4007858B9 /* RxCocoa */,
+				08B3A5DC28503FD4007858B9 /* RxRelay */,
+				08B3A5DE28503FD5007858B9 /* RxSwift */,
+			);
 			productName = NaverMovieSearch;
 			productReference = 08A4754A284F566A00C0FEFF /* NaverMovieSearch.app */;
 			productType = "com.apple.product-type.application";
@@ -189,6 +200,9 @@
 				Base,
 			);
 			mainGroup = 08A47541284F566A00C0FEFF;
+			packageReferences = (
+				08B3A5D928503FD4007858B9 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 08A4754B284F566A00C0FEFF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -440,6 +454,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		08B3A5D928503FD4007858B9 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		08B3A5DA28503FD4007858B9 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 08B3A5D928503FD4007858B9 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		08B3A5DC28503FD4007858B9 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 08B3A5D928503FD4007858B9 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		08B3A5DE28503FD5007858B9 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 08B3A5D928503FD4007858B9 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		08A47556284F566A00C0FEFF /* NaverMovieSearch.xcdatamodeld */ = {
