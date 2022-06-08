@@ -34,6 +34,19 @@ final class MovieSearchListView: UIView {
         return button
     }()
     
+    let movieTitleTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "영화 제목을 입력해주세요."
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
+        textField.leftViewMode = .always
+        textField.clearButtonMode = .always
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.systemGray.cgColor
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        
+        return textField
+    }()
+    
     lazy var movieListCollectionView: UICollectionView = {
         let listConfiguration = UICollectionLayoutListConfiguration(appearance: .plain)
         let listLayout = UICollectionViewCompositionalLayout.list(using: listConfiguration)
@@ -68,6 +81,7 @@ final class MovieSearchListView: UIView {
     private func configureSubviews() {
         addSubview(titleLabel)
         addSubview(favoriteButton)
+        addSubview(movieTitleTextField)
         addSubview(movieListCollectionView)
     }
     
@@ -84,7 +98,14 @@ final class MovieSearchListView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            movieListCollectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+            movieTitleTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),           
+            movieTitleTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            movieTitleTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            movieTitleTextField.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.05),
+        ])
+        
+        NSLayoutConstraint.activate([
+            movieListCollectionView.topAnchor.constraint(equalTo: movieTitleTextField.bottomAnchor, constant: 16),
             movieListCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
             movieListCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             movieListCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor)
