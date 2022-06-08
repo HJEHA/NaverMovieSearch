@@ -28,6 +28,7 @@
 		08B3A5FC285083AF007858B9 /* MovieListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3A5FB285083AF007858B9 /* MovieListUseCase.swift */; };
 		08B3A5FF2850854F007858B9 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3A5FE2850854F007858B9 /* ViewModel.swift */; };
 		08B3A601285085E7007858B9 /* MovieSearchListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3A600285085E7007858B9 /* MovieSearchListViewModel.swift */; };
+		08B3A60328508A8E007858B9 /* MovieInfomationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3A60228508A8E007858B9 /* MovieInfomationItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		08B3A5FB285083AF007858B9 /* MovieListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListUseCase.swift; sourceTree = "<group>"; };
 		08B3A5FE2850854F007858B9 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		08B3A600285085E7007858B9 /* MovieSearchListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchListViewModel.swift; sourceTree = "<group>"; };
+		08B3A60228508A8E007858B9 /* MovieInfomationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfomationItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				08B3A600285085E7007858B9 /* MovieSearchListViewModel.swift */,
+				08B3A60228508A8E007858B9 /* MovieInfomationItem.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				08A4756F284F59A700C0FEFF /* MovieSearchResponseDTO+Mapping.swift in Sources */,
 				08B3A601285085E7007858B9 /* MovieSearchListViewModel.swift in Sources */,
 				08A4754E284F566A00C0FEFF /* AppDelegate.swift in Sources */,
+				08B3A60328508A8E007858B9 /* MovieInfomationItem.swift in Sources */,
 				08B3A5FF2850854F007858B9 /* ViewModel.swift in Sources */,
 				08B3A5EB28504625007858B9 /* MovieSearchAPI.swift in Sources */,
 				08B3A5F928507138007858B9 /* MovieInformation.swift in Sources */,

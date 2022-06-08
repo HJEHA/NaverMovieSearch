@@ -24,7 +24,11 @@ final class MovieSearchListViewModel: ViewModel {
     // MARK: - Output
     
     final class Output {
+        let movieInformationItem: Observable<[MovieInformationItem]>
         
+        init(movieInformationItem: Observable<[MovieInformationItem]>) {
+            self.movieInformationItem = movieInformationItem
+        }
     }
     
     // MARK: - Properties
@@ -38,7 +42,24 @@ final class MovieSearchListViewModel: ViewModel {
     }
     
     func transform(_ input: Input) -> Output {
+        let movieInfomationObservable = input.movieTitle
+            .withUnretained(self)
+            .flatMap { (self, title) in
+                self.useCase.fetch(movieTitle: title)
+            }
+            .map { infomations in
+                return infomations.map {
+                    return MovieInformationItem(
+                        title: $0.title,
+                        posterURL: $0.posterURL,
+                        director: $0.director.joined(separator: ", "),
+                        actors: $0.actors.joined(separator: ", "),
+                        userRating: $0.userRating,
+                        isFavorite: $0.isFavorite
+                    )
+                }
+            }
         
-        return Output()
+        return Output(movieInformationItem: movieInfomationObservable)
     }
 }
