@@ -9,7 +9,7 @@ import Foundation
 
 import RxSwift
 
-final class HttpNetwork {
+final class HTTPNetwork {
     private let session: URLSession
     
     init(session: URLSession = URLSession.shared) {

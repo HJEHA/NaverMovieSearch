@@ -18,10 +18,13 @@
 		08B3A5DB28503FD4007858B9 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 08B3A5DA28503FD4007858B9 /* RxCocoa */; };
 		08B3A5DD28503FD4007858B9 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 08B3A5DC28503FD4007858B9 /* RxRelay */; };
 		08B3A5DF28503FD5007858B9 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 08B3A5DE28503FD5007858B9 /* RxSwift */; };
-		08B3A5E328504091007858B9 /* HttpNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3A5E228504091007858B9 /* HttpNetwork.swift */; };
+		08B3A5E328504091007858B9 /* HTTPNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3A5E228504091007858B9 /* HTTPNetwork.swift */; };
 		08B3A5E5285040B7007858B9 /* APIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3A5E4285040B7007858B9 /* APIProtocol.swift */; };
 		08B3A5E828504174007858B9 /* HttpNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3A5E728504174007858B9 /* HttpNetworkError.swift */; };
 		08B3A5EB28504625007858B9 /* MovieSearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3A5EA28504625007858B9 /* MovieSearchAPI.swift */; };
+		08B3A5F02850704A007858B9 /* DefaultMovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3A5EF2850704A007858B9 /* DefaultMovieRepository.swift */; };
+		08B3A5F6285070E5007858B9 /* MovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3A5F5285070E5007858B9 /* MovieRepository.swift */; };
+		08B3A5F928507138007858B9 /* MovieInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3A5F828507138007858B9 /* MovieInformation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,10 +38,13 @@
 		08A4755C284F566C00C0FEFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		08A4755E284F566C00C0FEFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08A4756E284F59A700C0FEFF /* MovieSearchResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieSearchResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
-		08B3A5E228504091007858B9 /* HttpNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpNetwork.swift; sourceTree = "<group>"; };
+		08B3A5E228504091007858B9 /* HTTPNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPNetwork.swift; sourceTree = "<group>"; };
 		08B3A5E4285040B7007858B9 /* APIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProtocol.swift; sourceTree = "<group>"; };
 		08B3A5E728504174007858B9 /* HttpNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpNetworkError.swift; sourceTree = "<group>"; };
 		08B3A5EA28504625007858B9 /* MovieSearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchAPI.swift; sourceTree = "<group>"; };
+		08B3A5EF2850704A007858B9 /* DefaultMovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMovieRepository.swift; sourceTree = "<group>"; };
+		08B3A5F5285070E5007858B9 /* MovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepository.swift; sourceTree = "<group>"; };
+		08B3A5F828507138007858B9 /* MovieInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInformation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				08A4756B284F591000C0FEFF /* Data */,
+				08B3A5F1285070B0007858B9 /* Domain */,
 				08A47566284F575700C0FEFF /* Presentation */,
 				08A47565284F573000C0FEFF /* Resource */,
 				08A47564284F571A00C0FEFF /* Application */,
@@ -146,6 +153,7 @@
 		08A4756B284F591000C0FEFF /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				08B3A5EE28507020007858B9 /* Repository */,
 				08B3A5E028504013007858B9 /* Network */,
 				08A4756C284F591600C0FEFF /* NetworkDTO */,
 			);
@@ -172,7 +180,7 @@
 		08B3A5E128504019007858B9 /* HTTP */ = {
 			isa = PBXGroup;
 			children = (
-				08B3A5E228504091007858B9 /* HttpNetwork.swift */,
+				08B3A5E228504091007858B9 /* HTTPNetwork.swift */,
 				08B3A5E62850415C007858B9 /* Error */,
 			);
 			path = HTTP;
@@ -193,6 +201,47 @@
 				08B3A5EA28504625007858B9 /* MovieSearchAPI.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		08B3A5EE28507020007858B9 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				08B3A5EF2850704A007858B9 /* DefaultMovieRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		08B3A5F1285070B0007858B9 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				08B3A5F72850712B007858B9 /* Entity */,
+				08B3A5F2285070BD007858B9 /* Interfaces */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		08B3A5F2285070BD007858B9 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				08B3A5F3285070C7007858B9 /* Repository */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		08B3A5F3285070C7007858B9 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				08B3A5F5285070E5007858B9 /* MovieRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		08B3A5F72850712B007858B9 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				08B3A5F828507138007858B9 /* MovieInformation.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,11 +323,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08B3A5E328504091007858B9 /* HttpNetwork.swift in Sources */,
+				08B3A5F02850704A007858B9 /* DefaultMovieRepository.swift in Sources */,
+				08B3A5E328504091007858B9 /* HTTPNetwork.swift in Sources */,
 				08A47552284F566A00C0FEFF /* ViewController.swift in Sources */,
+				08B3A5F6285070E5007858B9 /* MovieRepository.swift in Sources */,
 				08A4756F284F59A700C0FEFF /* MovieSearchResponseDTO+Mapping.swift in Sources */,
 				08A4754E284F566A00C0FEFF /* AppDelegate.swift in Sources */,
 				08B3A5EB28504625007858B9 /* MovieSearchAPI.swift in Sources */,
+				08B3A5F928507138007858B9 /* MovieInformation.swift in Sources */,
 				08B3A5E5285040B7007858B9 /* APIProtocol.swift in Sources */,
 				08B3A5E828504174007858B9 /* HttpNetworkError.swift in Sources */,
 				08A47550284F566A00C0FEFF /* SceneDelegate.swift in Sources */,

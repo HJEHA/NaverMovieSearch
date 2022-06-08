@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct MovieSearchResponse: Decodable {
+struct MovieSearchResponseDTO: Decodable {
     let lastBuildDate: String
     let total: Int
     let start: Int
     let display: Int
-    let movieInformations: [MovieInfo]
+    let movieInformations: [MovieInformationDTO]
     
     enum CodingKeys: String, CodingKey {
         case lastBuildDate
@@ -24,8 +24,8 @@ struct MovieSearchResponse: Decodable {
     }
 }
 
-extension MovieSearchResponse {
-    struct MovieInfo: Decodable {
+extension MovieSearchResponseDTO {
+    struct MovieInformationDTO: Decodable {
         let title: String
         let link: String
         let image: String
