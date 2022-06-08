@@ -8,5 +8,11 @@
 import Foundation
 
 struct MovieInformation {
-    
+    let title: String
+    let posterURL: String
+    let pagelink: String
+    let director: String
+    let actors: [String]
+    let userRating: String
+    var isFavorite: Bool
 }

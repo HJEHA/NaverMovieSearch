@@ -19,6 +19,15 @@ final class DefaultMovieRepository {
 
 extension DefaultMovieRepository: MovieRepository {
     func fetch(movieTitle: String) -> Observable<[MovieInformation]> {
-        return .empty()
+        let movieSearchAPI = MovieSearchAPI(by: movieTitle)
+
+        return network.fetch(movieSearchAPI)
+            .map { data -> [MovieInformation] in
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let decodedType = try? decoder.decode(MovieSearchResponseDTO.self, from: data)
+                
+                return decodedType?.toDomain() ?? []
+            }
     }
 }

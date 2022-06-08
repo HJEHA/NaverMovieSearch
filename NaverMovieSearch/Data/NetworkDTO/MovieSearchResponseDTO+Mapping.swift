@@ -20,7 +20,7 @@ struct MovieSearchResponseDTO: Decodable {
         case start
         case display
         
-        case movieInformations = "item"
+        case movieInformations = "items"
     }
 }
 
@@ -45,6 +45,26 @@ extension MovieSearchResponseDTO {
             case userRating
             
             case productionYear = "pubDate"
+        }
+    }
+}
+
+// MARK: - Mapping
+
+extension MovieSearchResponseDTO {
+    func toDomain() -> [MovieInformation] {
+        return movieInformations.map {
+            let actors = $0.actor.components(separatedBy: "|").filter { $0 != "" }
+            
+            return MovieInformation(
+                title: $0.title,
+                posterURL: $0.image,
+                pagelink: $0.link,
+                director: $0.director,
+                actors: actors,
+                userRating: $0.userRating,
+                isFavorite: false
+            )
         }
     }
 }
