@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		08A4754E284F566A00C0FEFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4754D284F566A00C0FEFF /* AppDelegate.swift */; };
 		08A47550284F566A00C0FEFF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4754F284F566A00C0FEFF /* SceneDelegate.swift */; };
-		08A47552284F566A00C0FEFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A47551284F566A00C0FEFF /* ViewController.swift */; };
-		08A47555284F566A00C0FEFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08A47553284F566A00C0FEFF /* Main.storyboard */; };
+		08A47552284F566A00C0FEFF /* MovieSearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A47551284F566A00C0FEFF /* MovieSearchListViewController.swift */; };
 		08A47558284F566A00C0FEFF /* NaverMovieSearch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 08A47556284F566A00C0FEFF /* NaverMovieSearch.xcdatamodeld */; };
 		08A4755A284F566C00C0FEFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08A47559284F566C00C0FEFF /* Assets.xcassets */; };
 		08A4755D284F566C00C0FEFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08A4755B284F566C00C0FEFF /* LaunchScreen.storyboard */; };
@@ -35,8 +34,7 @@
 		08A4754A284F566A00C0FEFF /* NaverMovieSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaverMovieSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08A4754D284F566A00C0FEFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08A4754F284F566A00C0FEFF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		08A47551284F566A00C0FEFF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		08A47554284F566A00C0FEFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		08A47551284F566A00C0FEFF /* MovieSearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchListViewController.swift; sourceTree = "<group>"; };
 		08A47557284F566A00C0FEFF /* NaverMovieSearch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NaverMovieSearch.xcdatamodel; sourceTree = "<group>"; };
 		08A47559284F566C00C0FEFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08A4755C284F566C00C0FEFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -146,8 +144,7 @@
 		08A47569284F577C00C0FEFF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				08A47551284F566A00C0FEFF /* ViewController.swift */,
-				08A47553284F566A00C0FEFF /* Main.storyboard */,
+				08A47551284F566A00C0FEFF /* MovieSearchListViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -340,7 +337,6 @@
 			files = (
 				08A4755D284F566C00C0FEFF /* LaunchScreen.storyboard in Resources */,
 				08A4755A284F566C00C0FEFF /* Assets.xcassets in Resources */,
-				08A47555284F566A00C0FEFF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,7 +349,7 @@
 			files = (
 				08B3A5F02850704A007858B9 /* DefaultMovieRepository.swift in Sources */,
 				08B3A5E328504091007858B9 /* HTTPNetwork.swift in Sources */,
-				08A47552284F566A00C0FEFF /* ViewController.swift in Sources */,
+				08A47552284F566A00C0FEFF /* MovieSearchListViewController.swift in Sources */,
 				08B3A5F6285070E5007858B9 /* MovieRepository.swift in Sources */,
 				08A4756F284F59A700C0FEFF /* MovieSearchResponseDTO+Mapping.swift in Sources */,
 				08B3A601285085E7007858B9 /* MovieSearchListViewModel.swift in Sources */,
@@ -373,14 +369,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		08A47553284F566A00C0FEFF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				08A47554284F566A00C0FEFF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		08A4755B284F566C00C0FEFF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -520,7 +508,6 @@
 				INFOPLIST_FILE = NaverMovieSearch/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -548,7 +535,6 @@
 				INFOPLIST_FILE = NaverMovieSearch/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
