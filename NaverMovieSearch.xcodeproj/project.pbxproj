@@ -25,6 +25,7 @@
 		08B3A5F02850704A007858B9 /* DefaultMovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3A5EF2850704A007858B9 /* DefaultMovieRepository.swift */; };
 		08B3A5F6285070E5007858B9 /* MovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3A5F5285070E5007858B9 /* MovieRepository.swift */; };
 		08B3A5F928507138007858B9 /* MovieInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3A5F828507138007858B9 /* MovieInformation.swift */; };
+		08B3A5FC285083AF007858B9 /* MovieListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3A5FB285083AF007858B9 /* MovieListUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		08B3A5EF2850704A007858B9 /* DefaultMovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMovieRepository.swift; sourceTree = "<group>"; };
 		08B3A5F5285070E5007858B9 /* MovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepository.swift; sourceTree = "<group>"; };
 		08B3A5F828507138007858B9 /* MovieInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInformation.swift; sourceTree = "<group>"; };
+		08B3A5FB285083AF007858B9 /* MovieListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +216,7 @@
 		08B3A5F1285070B0007858B9 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				08B3A5FA2850835C007858B9 /* UseCase */,
 				08B3A5F72850712B007858B9 /* Entity */,
 				08B3A5F2285070BD007858B9 /* Interfaces */,
 			);
@@ -242,6 +245,14 @@
 				08B3A5F828507138007858B9 /* MovieInformation.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		08B3A5FA2850835C007858B9 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				08B3A5FB285083AF007858B9 /* MovieListUseCase.swift */,
+			);
+			path = UseCase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,6 +345,7 @@
 				08B3A5E5285040B7007858B9 /* APIProtocol.swift in Sources */,
 				08B3A5E828504174007858B9 /* HttpNetworkError.swift in Sources */,
 				08A47550284F566A00C0FEFF /* SceneDelegate.swift in Sources */,
+				08B3A5FC285083AF007858B9 /* MovieListUseCase.swift in Sources */,
 				08A47558284F566A00C0FEFF /* NaverMovieSearch.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
