@@ -173,7 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				08B3A5E228504091007858B9 /* HttpNetwork.swift */,
-				08B3A5E4285040B7007858B9 /* APIProtocol.swift */,
 				08B3A5E62850415C007858B9 /* Error */,
 			);
 			path = HTTP;
@@ -190,6 +189,7 @@
 		08B3A5E928504612007858B9 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				08B3A5E4285040B7007858B9 /* APIProtocol.swift */,
 				08B3A5EA28504625007858B9 /* MovieSearchAPI.swift */,
 			);
 			path = API;

@@ -14,8 +14,8 @@ struct MovieSearchAPI: Gettable {
         "X-Naver-Client-Secret": "JnOpikaNrF"
     ]
     
-    init(movieTitle: String, endPoint: String) {
-        var urlComponents = URLComponents(string: "\(endPoint)movie?")
+    init(movieTitle: String) {
+        var urlComponents = URLComponents(string: "https://openapi.naver.com/v1/search/movie?")
         let pageNumberQuery = URLQueryItem(name: "query", value: "\(movieTitle)")
         urlComponents?.queryItems?.append(pageNumberQuery)
         
