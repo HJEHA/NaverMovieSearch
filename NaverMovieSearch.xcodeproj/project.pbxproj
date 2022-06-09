@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		085E7FB42851EBCE00D933D2 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085E7FB32851EBCE00D933D2 /* ImageCacheManager.swift */; };
 		08A4754E284F566A00C0FEFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4754D284F566A00C0FEFF /* AppDelegate.swift */; };
 		08A47550284F566A00C0FEFF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4754F284F566A00C0FEFF /* SceneDelegate.swift */; };
 		08A47552284F566A00C0FEFF /* MovieSearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A47551284F566A00C0FEFF /* MovieSearchListViewController.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		085E7FB32851EBCE00D933D2 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		08A4754A284F566A00C0FEFF /* NaverMovieSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaverMovieSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08A4754D284F566A00C0FEFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08A4754F284F566A00C0FEFF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		085E7FB22851EBB800D933D2 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				085E7FB32851EBCE00D933D2 /* ImageCacheManager.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		08A47541284F566A00C0FEFF = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +100,7 @@
 		08A4754C284F566A00C0FEFF /* NaverMovieSearch */ = {
 			isa = PBXGroup;
 			children = (
+				085E7FB22851EBB800D933D2 /* Utility */,
 				08A4756B284F591000C0FEFF /* Data */,
 				08B3A5F1285070B0007858B9 /* Domain */,
 				08A47566284F575700C0FEFF /* Presentation */,
@@ -367,6 +378,7 @@
 				08B3A5EB28504625007858B9 /* MovieSearchAPI.swift in Sources */,
 				08B3A5F928507138007858B9 /* MovieInformation.swift in Sources */,
 				08B3A5E5285040B7007858B9 /* APIProtocol.swift in Sources */,
+				085E7FB42851EBCE00D933D2 /* ImageCacheManager.swift in Sources */,
 				08B3A5E828504174007858B9 /* HttpNetworkError.swift in Sources */,
 				08A47550284F566A00C0FEFF /* SceneDelegate.swift in Sources */,
 				08B3A5FC285083AF007858B9 /* MovieListUseCase.swift in Sources */,

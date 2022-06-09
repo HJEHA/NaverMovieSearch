@@ -72,7 +72,7 @@ final class MovieListCellCollectionViewCell: UICollectionViewCell {
     }
     
     func update(item: MovieInformationItem) {
-        posterImageView.image = UIImage(data: try! Data(contentsOf: URL(string: item.posterURL)!))
+        posterImageView.loadImage(of: item.posterURL)
         titleLabel.text = item.title
         directorLabel.text = "감독: " + item.director
         actorsLabel.text = "출연: " + item.actors
@@ -124,5 +124,30 @@ final class MovieListCellCollectionViewCell: UICollectionViewCell {
             favoriteButton.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
         ])
+    }
+}
+
+// MARK: - Private Extension
+
+private extension UIImageView {
+    func loadImage(of key: String) {
+        let cacheKey = NSString(string: key)
+        if let cachedImage = ImageCacheManager.shared.object(forKey: cacheKey) {
+            self.image = cachedImage
+            return
+        }
+        
+        DispatchQueue.global().async {
+            guard let imageURL = URL(string: key),
+                  let imageData = try? Data(contentsOf: imageURL),
+                  let loadedImage = UIImage(data: imageData) else {
+                return
+            }
+            ImageCacheManager.shared.setObject(loadedImage, forKey: cacheKey)
+            
+            DispatchQueue.main.async {
+                self.image = loadedImage
+            }
+        }
     }
 }
