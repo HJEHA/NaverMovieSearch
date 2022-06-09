@@ -63,8 +63,7 @@ private extension MovieSearchListViewController {
         
         let output = viewModel.transform(input)
         output.movieInformationItem
-            .debug()
-            .asDriver(onErrorJustReturn: [MovieInformationItem(title: "dd", posterURL: "dd", director: "dd", actors: "dd", userRating: "dd", isFavorite: false)])
+            .asDriver(onErrorJustReturn: [])
             .drive(onNext: { [weak self] in
                 self?.applySnapShot($0)
             })
