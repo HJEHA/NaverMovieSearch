@@ -33,10 +33,10 @@ final class HTTPNetwork {
                     return
                 }
                 
-                guard (200..<300).contains(httpResponse.statusCode) else {
-                    emmiter.onError(HttpNetworkError.abnormalStatusCode(httpResponse.statusCode))
-                    return
-                }
+//                guard (200..<300).contains(httpResponse.statusCode) else {
+//                    emmiter.onError(HttpNetworkError.abnormalStatusCode(httpResponse.statusCode))
+//                    return
+//                }
                 
                 guard let data = data else {
                     emmiter.onError(HttpNetworkError.invalidResponse)

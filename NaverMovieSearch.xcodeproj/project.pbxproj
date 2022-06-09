@@ -29,6 +29,7 @@
 		08B3A601285085E7007858B9 /* MovieSearchListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3A600285085E7007858B9 /* MovieSearchListViewModel.swift */; };
 		08B3A60328508A8E007858B9 /* MovieInfomationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3A60228508A8E007858B9 /* MovieInfomationItem.swift */; };
 		08B3A6052850CCD2007858B9 /* MovieSearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3A6042850CCD2007858B9 /* MovieSearchListView.swift */; };
+		08B3A6072850E9C1007858B9 /* MovieListCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3A6062850E9C1007858B9 /* MovieListCellCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		08B3A600285085E7007858B9 /* MovieSearchListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchListViewModel.swift; sourceTree = "<group>"; };
 		08B3A60228508A8E007858B9 /* MovieInfomationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfomationItem.swift; sourceTree = "<group>"; };
 		08B3A6042850CCD2007858B9 /* MovieSearchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchListView.swift; sourceTree = "<group>"; };
+		08B3A6062850E9C1007858B9 /* MovieListCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCellCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			children = (
 				08A47551284F566A00C0FEFF /* MovieSearchListViewController.swift */,
 				08B3A6042850CCD2007858B9 /* MovieSearchListView.swift */,
+				08B3A6062850E9C1007858B9 /* MovieListCellCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				08A4756F284F59A700C0FEFF /* MovieSearchResponseDTO+Mapping.swift in Sources */,
 				08B3A601285085E7007858B9 /* MovieSearchListViewModel.swift in Sources */,
 				08A4754E284F566A00C0FEFF /* AppDelegate.swift in Sources */,
+				08B3A6072850E9C1007858B9 /* MovieListCellCollectionViewCell.swift in Sources */,
 				08B3A60328508A8E007858B9 /* MovieInfomationItem.swift in Sources */,
 				08B3A6052850CCD2007858B9 /* MovieSearchListView.swift in Sources */,
 				08B3A5FF2850854F007858B9 /* ViewModel.swift in Sources */,

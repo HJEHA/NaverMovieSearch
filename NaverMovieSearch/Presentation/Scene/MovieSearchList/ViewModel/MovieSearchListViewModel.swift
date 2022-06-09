@@ -14,9 +14,9 @@ final class MovieSearchListViewModel: ViewModel {
     // MARK: - Input
     
     final class Input {
-        let movieTitle: Observable<String>
+        let movieTitle: Observable<String?>
         
-        init(movieTitle: Observable<String>) {
+        init(movieTitle: Observable<String?>) {
             self.movieTitle = movieTitle
         }
     }
@@ -43,6 +43,7 @@ final class MovieSearchListViewModel: ViewModel {
     
     func transform(_ input: Input) -> Output {
         let movieInfomationObservable = input.movieTitle
+            .filterNil()
             .withUnretained(self)
             .flatMap { (self, title) in
                 self.useCase.fetch(movieTitle: title)
@@ -61,5 +62,13 @@ final class MovieSearchListViewModel: ViewModel {
             }
         
         return Output(movieInformationItem: movieInfomationObservable)
+    }
+}
+
+// MARK: - Private Extension
+
+private extension Observable {
+    func filterNil<U>() -> Observable<U> where Element == U? {
+        return filter { $0 != nil }.map { $0! }
     }
 }
