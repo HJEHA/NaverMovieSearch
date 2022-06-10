@@ -96,6 +96,10 @@ final class MovieInformationView: UIView {
         }
     }
     
+    func hiddenTitle(isHidden: Bool) {
+        titleLabel.isHidden = isHidden
+    }
+    
     // MARK: - Configure
     
     private func configureSubviews() {

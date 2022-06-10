@@ -78,7 +78,11 @@ private extension MovieSearchListViewController {
                 guard let self = self else { return }
                 
                 let item = self.dataSource?.itemIdentifier(for: $0)
-                print(item)
+                
+                let detailViewController = MovieDetailViewController()
+                detailViewController.update(item: item!)
+                
+                self.navigationController?.show(detailViewController, sender: nil)
             })
             .disposed(by: disposeBag)
     }

@@ -59,7 +59,6 @@ final class MovieSearchListView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        translatesAutoresizingMaskIntoConstraints = false
         configureSubviews()
         configureSubViewsConstraint()
     }
@@ -71,6 +70,8 @@ final class MovieSearchListView: UIView {
     }
     
     func configureConstraint(view: UIView) {
+        translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
