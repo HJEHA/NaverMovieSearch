@@ -51,6 +51,7 @@ final class MovieSearchListView: UIView {
         let listConfiguration = UICollectionLayoutListConfiguration(appearance: .plain)
         let listLayout = UICollectionViewCompositionalLayout.list(using: listConfiguration)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: listLayout)
+        collectionView.keyboardDismissMode = .onDrag
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         return collectionView

@@ -36,6 +36,8 @@ final class MovieSearchListViewController: UIViewController {
         configureMovieSearchListView()
         configureCollectionViewDataSource()
         bindViewModel()
+        bindCollectionView()
+        bindTapGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +68,17 @@ private extension MovieSearchListViewController {
             .asDriver(onErrorJustReturn: [])
             .drive(onNext: { [weak self] in
                 self?.applySnapShot($0)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func bindCollectionView() {
+        movieSearchListView.movieListCollectionView.rx.itemSelected
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                
+                let item = self.dataSource?.itemIdentifier(for: $0)
+                print(item)
             })
             .disposed(by: disposeBag)
     }
@@ -107,5 +120,21 @@ private extension MovieSearchListViewController {
         snapShot.appendItems(items, toSection: .main)
         
         dataSource?.apply(snapShot)
+    }
+}
+
+
+// MARK: - Keyboard
+extension MovieSearchListViewController {
+    private func bindTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: nil)
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+        
+        tapGesture.rx.event
+            .subscribe(onNext: { [weak self] _ in
+                self?.view.endEditing(true)
+            })
+            .disposed(by: disposeBag)
     }
 }
