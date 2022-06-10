@@ -9,19 +9,20 @@ import Foundation
 
 import RxSwift
 
-final class DefaultMovieRepository {
+final class DefaultMovieRepository: MovieRepository {
     let network: HTTPNetwork
+    private(set) var movieInformationObservable: Observable<[MovieInformation]>?
     
     init(network: HTTPNetwork = HTTPNetwork()) {
         self.network = network
     }
 }
 
-extension DefaultMovieRepository: MovieRepository {
+extension DefaultMovieRepository {
     func fetch(movieTitle: String) -> Observable<[MovieInformation]> {
         let movieSearchAPI = MovieSearchAPI(by: movieTitle)
 
-        return network.fetch(movieSearchAPI)
+        movieInformationObservable = network.fetch(movieSearchAPI)
             .map { data -> [MovieInformation] in
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -29,5 +30,19 @@ extension DefaultMovieRepository: MovieRepository {
                 
                 return decodedType?.toDomain() ?? []
             }
+        
+        return movieInformationObservable ?? Observable.empty()
+    }
+    
+    func fetch(movieTitle: String) -> Observable<MovieInformation> {
+        let result = movieInformationObservable?.flatMapFirst { infos -> Observable<MovieInformation> in
+            guard let info = infos.first else {
+                return Observable.empty()
+            }
+            
+            return Observable.just(info)
+        }
+        
+        return result ?? .empty()
     }
 }
