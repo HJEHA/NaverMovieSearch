@@ -19,8 +19,8 @@ final class DefaultMovieRepository: MovieRepository {
 }
 
 extension DefaultMovieRepository {
-    func fetch(movieTitle: String) -> Observable<[MovieInformation]> {
-        let movieSearchAPI = MovieSearchAPI(by: movieTitle)
+    func fetchMovies(title: String) -> Observable<[MovieInformation]> {
+        let movieSearchAPI = MovieSearchAPI(by: title)
 
         movieInformationObservable = network.fetch(movieSearchAPI)
             .map { data -> [MovieInformation] in
@@ -34,9 +34,9 @@ extension DefaultMovieRepository {
         return movieInformationObservable ?? Observable.empty()
     }
     
-    func fetch(movieTitle: String) -> Observable<MovieInformation> {
+    func fetchMovie(title: String) -> Observable<MovieInformation> {
         let result = movieInformationObservable?.flatMapFirst { infos -> Observable<MovieInformation> in
-            guard let info = infos.first else {
+            guard let info = infos.filter({ $0.title == title }).first else {
                 return Observable.empty()
             }
             

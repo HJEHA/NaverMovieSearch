@@ -51,7 +51,7 @@ final class MovieSearchListViewModel: ViewModel {
             .map { infomations in
                 return infomations.map {
                     return MovieInformationItem(
-                        title: $0.title.replacingOccurrences(of: ["<b>", "</b>"], with: ""),
+                        title: $0.title,
                         posterURL: $0.posterURL,
                         director: $0.director.joined(separator: ", "),
                         actors: $0.actors.joined(separator: ", "),

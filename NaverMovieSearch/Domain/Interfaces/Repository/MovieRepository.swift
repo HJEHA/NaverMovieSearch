@@ -12,6 +12,6 @@ import RxSwift
 protocol MovieRepository {
     var movieInformationObservable: Observable<[MovieInformation]>? { get }
     
-    func fetch(movieTitle: String) -> Observable<[MovieInformation]>
-    func fetch(movieTitle: String) -> Observable<MovieInformation>
+    func fetchMovies(title: String) -> Observable<[MovieInformation]>
+    func fetchMovie(title: String) -> Observable<MovieInformation>
 }

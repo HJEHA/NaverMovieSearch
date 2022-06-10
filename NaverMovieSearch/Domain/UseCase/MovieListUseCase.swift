@@ -19,6 +19,6 @@ final class MovieListUseCase {
 
 extension MovieListUseCase {
     func fetch(movieTitle: String) -> Observable<[MovieInformation]> {
-        return movieRepository.fetch(movieTitle: movieTitle)
+        return movieRepository.fetchMovies(title: movieTitle)
     }
 }
