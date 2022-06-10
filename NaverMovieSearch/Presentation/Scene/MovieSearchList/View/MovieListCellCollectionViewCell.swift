@@ -86,7 +86,18 @@ final class MovieListCellCollectionViewCell: UICollectionViewCell {
         directorLabel.text = "감독: " + item.director
         actorsLabel.text = "출연: " + item.actors
         userRatingLabel.text = "평점: " + item.userRating
+        setFavoriteStarColor(isFavorite: item.isFavorite)
     }
+    
+    private func setFavoriteStarColor(isFavorite: Bool) {
+        if isFavorite {
+            favoriteButton.tintColor = .systemYellow            
+        } else {
+            favoriteButton.tintColor = .systemGray
+        }
+    }
+    
+    // MARK: - Configure
     
     private func configureSubviews() {
         addSubview(posterImageView)
