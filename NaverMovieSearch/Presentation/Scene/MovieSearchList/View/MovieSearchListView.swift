@@ -11,7 +11,7 @@ final class MovieSearchListView: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "네이버 영화 검색"
-        label.font = .preferredFont(forTextStyle: .title2)
+        label.font = .preferredFont(forTextStyle: .title2).bold
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -105,7 +105,7 @@ final class MovieSearchListView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            movieListCollectionView.topAnchor.constraint(equalTo: movieTitleTextField.bottomAnchor, constant: 10),
+            movieListCollectionView.topAnchor.constraint(equalTo: movieTitleTextField.bottomAnchor),
             movieListCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
             movieListCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             movieListCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor)

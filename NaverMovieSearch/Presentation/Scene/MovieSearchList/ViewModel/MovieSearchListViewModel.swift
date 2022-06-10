@@ -51,7 +51,7 @@ final class MovieSearchListViewModel: ViewModel {
             .map { infomations in
                 return infomations.map {
                     return MovieInformationItem(
-                        title: $0.title,
+                        title: $0.title.replacingOccurrences(of: ["<b>", "</b>"], with: ""),
                         posterURL: $0.posterURL,
                         director: $0.director.joined(separator: ", "),
                         actors: $0.actors.joined(separator: ", "),
@@ -70,5 +70,17 @@ final class MovieSearchListViewModel: ViewModel {
 private extension Observable {
     func filterNil<U>() -> Observable<U> where Element == U? {
         return filter { $0 != nil }.map { $0! }
+    }
+}
+
+private extension String {
+    func replacingOccurrences(of: [String], with: String) -> String {
+        var placingString = self
+        
+        of.forEach {
+            placingString = placingString.replacingOccurrences(of: $0, with: with)
+        }
+        
+        return placingString
     }
 }

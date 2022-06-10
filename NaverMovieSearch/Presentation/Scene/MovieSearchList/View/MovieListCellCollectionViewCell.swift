@@ -17,9 +17,18 @@ final class MovieListCellCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
+    private let verticalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
+    }()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .body)
+        label.font = .preferredFont(forTextStyle: .body).bold
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -81,48 +90,37 @@ final class MovieListCellCollectionViewCell: UICollectionViewCell {
     
     private func configureSubviews() {
         addSubview(posterImageView)
-        addSubview(titleLabel)
-        addSubview(directorLabel)
-        addSubview(actorsLabel)
-        addSubview(userRatingLabel)
+        addSubview(verticalStackView)
+        
+        verticalStackView.addArrangedSubview(titleLabel)
+        verticalStackView.addArrangedSubview(directorLabel)
+        verticalStackView.addArrangedSubview(actorsLabel)
+        verticalStackView.addArrangedSubview(userRatingLabel)
+        
         addSubview(favoriteButton)
     }
     
     private func configureSubViewsConstraint() {
         NSLayoutConstraint.activate([
-            heightAnchor.constraint(equalToConstant: 110)
+            heightAnchor.constraint(equalTo: verticalStackView.heightAnchor, constant: 12)
         ])
         
         NSLayoutConstraint.activate([
-            posterImageView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            posterImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             posterImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            posterImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.9),
-            posterImageView.widthAnchor.constraint(equalTo: posterImageView.heightAnchor, multiplier: 9 / 16)
+            posterImageView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.2),
+            posterImageView.widthAnchor.constraint(equalTo: posterImageView.heightAnchor, multiplier: 0.8)
         ])
         
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            titleLabel.leadingAnchor.constraint(equalTo: posterImageView.trailingAnchor, constant: 10)
-        ])
-        
-        NSLayoutConstraint.activate([
-            directorLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
-            directorLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            actorsLabel.topAnchor.constraint(equalTo: directorLabel.bottomAnchor, constant: 4),
-            actorsLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            userRatingLabel.topAnchor.constraint(equalTo: actorsLabel.bottomAnchor, constant: 4),
-            userRatingLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor)
+            verticalStackView.topAnchor.constraint(equalTo: posterImageView.topAnchor),
+            verticalStackView.leadingAnchor.constraint(equalTo: posterImageView.trailingAnchor, constant: 10),
+            verticalStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30)
         ])
         
         NSLayoutConstraint.activate([
             favoriteButton.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
+            favoriteButton.leadingAnchor.constraint(equalTo: verticalStackView.trailingAnchor)
         ])
     }
 }
