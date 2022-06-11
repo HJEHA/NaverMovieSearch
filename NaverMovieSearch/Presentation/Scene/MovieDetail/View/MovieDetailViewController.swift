@@ -17,6 +17,7 @@ final class MovieDetailViewController: UIViewController {
         super.viewDidLoad()
 
         configureMovieSearchListView()
+        configureBackButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,6 +28,7 @@ final class MovieDetailViewController: UIViewController {
     
     func update(item: MovieInformationItem) {
         movieDetailView.update(item: item)
+        configureTitle(to: item.title)
     }
 }
 
@@ -37,5 +39,22 @@ private extension MovieDetailViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(movieDetailView)
         movieDetailView.configureConstraint(view: view)
+    }
+    
+    func configureTitle(to title: String) {
+        let titleView: UILabel = {
+            let label = UILabel()
+            label.text = title
+            label.font = .preferredFont(forTextStyle: .title3).bold
+            
+            return label
+        }()
+        
+        navigationItem.titleView = titleView
+    }
+    
+    func configureBackButton() {
+        navigationController?.navigationBar.tintColor = .label
+        navigationController?.navigationBar.topItem?.title = String()
     }
 }
