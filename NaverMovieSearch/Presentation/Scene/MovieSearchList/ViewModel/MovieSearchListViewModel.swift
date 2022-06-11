@@ -33,7 +33,7 @@ final class MovieSearchListViewModel: ViewModel {
     
     // MARK: - Properties
     
-    private let useCase: MovieListUseCase
+    let useCase: MovieListUseCase
     
     // MARK: - Initializer
     
@@ -70,17 +70,5 @@ final class MovieSearchListViewModel: ViewModel {
 private extension Observable {
     func filterNil<U>() -> Observable<U> where Element == U? {
         return filter { $0 != nil }.map { $0! }
-    }
-}
-
-private extension String {
-    func replacingOccurrences(of: [String], with: String) -> String {
-        var placingString = self
-        
-        of.forEach {
-            placingString = placingString.replacingOccurrences(of: $0, with: with)
-        }
-        
-        return placingString
     }
 }

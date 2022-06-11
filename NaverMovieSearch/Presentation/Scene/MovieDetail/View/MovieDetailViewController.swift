@@ -26,7 +26,7 @@ final class MovieDetailViewController: UIViewController {
         navigationController?.isNavigationBarHidden = false
     }
     
-    func update(item: MovieInformationItem) {
+    func update(item: MovieInformation) {
         movieDetailView.update(item: item)
         configureTitle(to: item.title)
     }

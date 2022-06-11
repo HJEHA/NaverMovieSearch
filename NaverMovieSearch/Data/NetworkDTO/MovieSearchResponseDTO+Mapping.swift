@@ -58,7 +58,7 @@ extension MovieSearchResponseDTO {
             let actors = $0.actor.componentsNotEmpty(separatedBy: "|")
             
             return MovieInformation(
-                title: $0.title,
+                title: $0.title.replacingOccurrences(of: ["<b>", "</b>"], with: ""),
                 posterURL: $0.image,
                 pagelink: $0.link,
                 director: director,
@@ -75,5 +75,15 @@ extension MovieSearchResponseDTO {
 private extension String {
     func componentsNotEmpty(separatedBy: String) -> [String] {
         return self.components(separatedBy: separatedBy).filter { $0 != "" }
+    }
+    
+    func replacingOccurrences(of: [String], with: String) -> String {
+        var placingString = self
+        
+        of.forEach {
+            placingString = placingString.replacingOccurrences(of: $0, with: with)
+        }
+        
+        return placingString
     }
 }

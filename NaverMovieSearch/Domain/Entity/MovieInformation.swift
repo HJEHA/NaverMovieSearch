@@ -16,3 +16,16 @@ struct MovieInformation {
     let userRating: String
     var isFavorite: Bool
 }
+
+extension MovieInformation {
+    func toItem() -> MovieInformationItem {
+        return MovieInformationItem(
+            title: title,
+            posterURL: posterURL,
+            director: director.joined(separator: ", "),
+            actors: actors.joined(separator: ", "),
+            userRating: userRating,
+            isFavorite: isFavorite
+        )
+    }
+}

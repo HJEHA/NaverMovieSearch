@@ -21,7 +21,6 @@ final class MovieDetailView: UIView {
     private let moviewWebView: WKWebView = {
         let webView = WKWebView()
         webView.translatesAutoresizingMaskIntoConstraints = false
-        webView.backgroundColor = .systemYellow
         
         return webView
     }()
@@ -38,8 +37,15 @@ final class MovieDetailView: UIView {
         configureSubViewsConstraint()
     }
     
-    func update(item: MovieInformationItem) {
-        movieInformationView.update(item: item)
+    func update(item: MovieInformation) {
+        movieInformationView.update(item: item.toItem())
+        
+        guard let url = URL(string: item.pagelink) else {
+            return
+        }
+        
+        let request = URLRequest(url: url)
+        moviewWebView.load(request)
     }
     
     func configureConstraint(view: UIView) {

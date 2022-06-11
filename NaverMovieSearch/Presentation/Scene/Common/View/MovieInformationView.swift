@@ -81,7 +81,7 @@ final class MovieInformationView: UIView {
     
     func update(item: MovieInformationItem) {
         posterImageView.loadImage(of: item.posterURL)
-        titleLabel.text = item.title.replacingOccurrences(of: ["<b>", "</b>"], with: "")
+        titleLabel.text = item.title
         directorLabel.text = "감독: " + item.director
         actorsLabel.text = "출연: " + item.actors
         userRatingLabel.text = "평점: " + item.userRating
@@ -163,17 +163,3 @@ private extension UIImageView {
         }
     }
 }
-
-private extension String {
-    func replacingOccurrences(of: [String], with: String) -> String {
-        var placingString = self
-        
-        of.forEach {
-            placingString = placingString.replacingOccurrences(of: $0, with: with)
-        }
-        
-        return placingString
-    }
-}
-
-    

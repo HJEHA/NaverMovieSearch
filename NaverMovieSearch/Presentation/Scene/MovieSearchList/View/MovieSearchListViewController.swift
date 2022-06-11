@@ -78,11 +78,15 @@ private extension MovieSearchListViewController {
                 guard let self = self else { return }
                 
                 let item = self.dataSource?.itemIdentifier(for: $0)
-                
-                let detailViewController = MovieDetailViewController()
-                detailViewController.update(item: item!)
-                
-                self.navigationController?.show(detailViewController, sender: nil)
+                self.viewModel.useCase.movieRepository.fetchMovie(title: item!.title)
+                    .observe(on: MainScheduler.instance)
+                    .subscribe(onNext: {
+                        let detailViewController = MovieDetailViewController()
+                        detailViewController.update(item: $0)
+                        
+                        self.navigationController?.show(detailViewController, sender: nil)
+                    })
+                    .disposed(by: self.disposeBag)
             })
             .disposed(by: disposeBag)
     }
