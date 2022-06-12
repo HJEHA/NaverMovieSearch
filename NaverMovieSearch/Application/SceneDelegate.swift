@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         let navigationController = UINavigationController()
-        let coordinator = MovieSearchCoordinator(navigationController: navigationController)
+        let coordinator = AppCoordinator(navigationController: navigationController)
         coordinator.start()
         
         window = UIWindow(windowScene: windowScene)
