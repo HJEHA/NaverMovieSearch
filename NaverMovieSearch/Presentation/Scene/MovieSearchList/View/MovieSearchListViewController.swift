@@ -11,7 +11,11 @@ import RxSwift
 import RxCocoa
 
 final class MovieSearchListViewController: UIViewController {
-
+    
+    // MARK: - Coordinator
+    
+    weak var coordinator: MovieSearchCoordinator?
+    
     // MARK: - Collection View
     
     private enum Section {
