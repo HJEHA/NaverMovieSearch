@@ -13,6 +13,10 @@ import RxRelay
 
 final class MovieDetailViewController: UIViewController {
 
+    // MARK: - Coordinator
+    
+    weak var coordinator: MovieDetailCoordinator?
+    
     // MARK: - View
     
     private let movieDetailView = MovieDetailView()
