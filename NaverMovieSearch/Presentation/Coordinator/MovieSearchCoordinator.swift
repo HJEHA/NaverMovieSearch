@@ -8,8 +8,11 @@
 import UIKit
 
 final class MovieSearchCoordinator: Coordinator {
+    
+    
     // MARK: - Coordinator Property
     
+    private weak var parentCoordinator: AppCoordinator?
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     
@@ -19,9 +22,11 @@ final class MovieSearchCoordinator: Coordinator {
     
     init(
         movieRepository: MovieRepository,
+        parentCoordinator: AppCoordinator?,
         navigationController: UINavigationController = UINavigationController()
     ) {
         self.movieRepository = movieRepository
+        self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
     }
     
@@ -32,5 +37,9 @@ final class MovieSearchCoordinator: Coordinator {
         movieSearchViewController.viewModel = movieSearchViewModel
         movieSearchViewController.coordinator = self
         navigationController.show(movieSearchViewController, sender: nil)
+    }
+    
+    func showMovieDetailView(title: String) {
+        parentCoordinator?.showMovieDetailView(movieTitle: title)
     }
 }

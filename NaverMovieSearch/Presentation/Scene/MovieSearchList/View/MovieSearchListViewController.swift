@@ -88,12 +88,8 @@ private extension MovieSearchListViewController {
                 else {
                     return
                 }
-                let detailViewModel = MovieDetailViewModel(movieTitle: movieTitle, useCase: MovieDetailUseCase(movieRepository: self.viewModel!.useCase.movieRepository))
                 
-                let detailViewController = MovieDetailViewController()
-                detailViewController.viewModel = detailViewModel
-                
-                self.navigationController?.show(detailViewController, sender: nil)
+                self.coordinator?.showMovieDetailView(title: movieTitle)
             })
             .disposed(by: disposeBag)
     }

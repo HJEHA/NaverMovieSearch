@@ -147,9 +147,9 @@
 			isa = PBXGroup;
 			children = (
 				08968CF9285630D500D947CE /* Protocol */,
+				08968D00285638D300D947CE /* AppCoordinator.swift */,
 				08968CFC2856314A00D947CE /* MovieSearchCoordinator.swift */,
 				08968CFE285634B900D947CE /* MovieDetailCoordinator.swift */,
-				08968D00285638D300D947CE /* AppCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";

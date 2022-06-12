@@ -40,6 +40,10 @@ final class MovieDetailViewController: UIViewController {
         navigationController?.isNavigationBarHidden = false
     }
     
+    deinit {
+        coordinator?.popMovieDetailView()
+    }
+    
     func update(item: MovieInformation) {
         movieDetailView.update(item: item)
         configureTitle(to: item.title)

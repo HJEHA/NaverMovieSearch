@@ -29,16 +29,30 @@ final class AppCoordinator: Coordinator {
     func showMovieSearchView() {
         let movieSearchCoordinator = MovieSearchCoordinator(
             movieRepository: movieRepository,
+            parentCoordinator: self,
             navigationController: navigationController
         )
+        childCoordinators.append(movieSearchCoordinator)
         movieSearchCoordinator.start()
     }
     
     func showMovieDetailView(movieTitle: String) {
-        let movieSearchCoordinator = MovieDetailCoordinator(
+        let movieDetailCoordinator = MovieDetailCoordinator(
+            movieTitle: movieTitle,
             movieRepository: movieRepository,
+            parentCoordinator: self,
             navigationController: navigationController
         )
-        movieSearchCoordinator.start()
+        childCoordinators.append(movieDetailCoordinator)
+        movieDetailCoordinator.start()
+    }
+    
+    func removeChildCoordinator(_ child: Coordinator) {
+        for (index, coordinator) in childCoordinators.enumerated() {
+            if coordinator === child {
+                childCoordinators.remove(at: index)
+                break
+            }
+        }
     }
 }
