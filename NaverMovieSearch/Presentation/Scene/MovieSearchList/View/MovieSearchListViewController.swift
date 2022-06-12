@@ -53,7 +53,7 @@ private extension MovieSearchListViewController {
     
     // MARK: - Bind ViewModel
     
-    private func bindViewModel() {
+    func bindViewModel() {
         
         // MARK: - Input
                 
@@ -78,15 +78,13 @@ private extension MovieSearchListViewController {
                 guard let self = self else { return }
                 
                 let item = self.dataSource?.itemIdentifier(for: $0)
-                self.viewModel.useCase.movieRepository.fetchMovie(title: item!.title)
-                    .observe(on: MainScheduler.instance)
-                    .subscribe(onNext: {
-                        let detailViewController = MovieDetailViewController()
-                        detailViewController.update(item: $0)
-                        
-                        self.navigationController?.show(detailViewController, sender: nil)
-                    })
-                    .disposed(by: self.disposeBag)
+                
+                let detailViewModel = MovieDetailViewModel(movieTitle: item!.title, useCase: MovieDetailUseCase(movieRepository: self.viewModel.useCase.movieRepository))
+                
+                let detailViewController = MovieDetailViewController()
+                detailViewController.viewModel = detailViewModel
+                
+                self.navigationController?.show(detailViewController, sender: nil)
             })
             .disposed(by: disposeBag)
     }

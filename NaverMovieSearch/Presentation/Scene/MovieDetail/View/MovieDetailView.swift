@@ -10,7 +10,7 @@ import WebKit
 
 final class MovieDetailView: UIView {
 
-    private lazy var movieInformationView: MovieInformationView = {
+    lazy var movieInformationView: MovieInformationView = {
         let informationView = MovieInformationView(frame: frame)
         informationView.hiddenTitle(isHidden: true)
         informationView.translatesAutoresizingMaskIntoConstraints = false
@@ -44,8 +44,10 @@ final class MovieDetailView: UIView {
             return
         }
         
-        let request = URLRequest(url: url)
-        moviewWebView.load(request)
+        if moviewWebView.url == nil {
+            let request = URLRequest(url: url)
+            moviewWebView.load(request)
+        }
     }
     
     func configureConstraint(view: UIView) {
