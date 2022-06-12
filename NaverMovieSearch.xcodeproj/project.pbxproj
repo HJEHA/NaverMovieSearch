@@ -14,6 +14,7 @@
 		08968CDD2853464800D947CE /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08968CDC2853464800D947CE /* MovieDetailViewController.swift */; };
 		08968CE02853476200D947CE /* MovieInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08968CDF2853476200D947CE /* MovieInformationView.swift */; };
 		08968CE22853526400D947CE /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08968CE12853526400D947CE /* MovieDetailView.swift */; };
+		08968CFB285630E000D947CE /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08968CFA285630E000D947CE /* Coordinator.swift */; };
 		08A4754E284F566A00C0FEFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4754D284F566A00C0FEFF /* AppDelegate.swift */; };
 		08A47550284F566A00C0FEFF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4754F284F566A00C0FEFF /* SceneDelegate.swift */; };
 		08A47552284F566A00C0FEFF /* MovieSearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A47551284F566A00C0FEFF /* MovieSearchListViewController.swift */; };
@@ -47,6 +48,7 @@
 		08968CDC2853464800D947CE /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		08968CDF2853476200D947CE /* MovieInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInformationView.swift; sourceTree = "<group>"; };
 		08968CE12853526400D947CE /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
+		08968CFA285630E000D947CE /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		08A4754A284F566A00C0FEFF /* NaverMovieSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaverMovieSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08A4754D284F566A00C0FEFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08A4754F284F566A00C0FEFF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,22 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		08968CF8285630C800D947CE /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				08968CF9285630D500D947CE /* Protocol */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		08968CF9285630D500D947CE /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				08968CFA285630E000D947CE /* Coordinator.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		08A47541284F566A00C0FEFF = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +206,7 @@
 		08A47566284F575700C0FEFF /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				08968CF8285630C800D947CE /* Coordinator */,
 				08A47567284F575F00C0FEFF /* Scene */,
 			);
 			path = Presentation;
@@ -424,6 +443,7 @@
 			files = (
 				08B3A5F02850704A007858B9 /* DefaultMovieRepository.swift in Sources */,
 				08B3A5E328504091007858B9 /* HTTPNetwork.swift in Sources */,
+				08968CFB285630E000D947CE /* Coordinator.swift in Sources */,
 				08A47552284F566A00C0FEFF /* MovieSearchListViewController.swift in Sources */,
 				08B3A5F6285070E5007858B9 /* MovieRepository.swift in Sources */,
 				08968CDD2853464800D947CE /* MovieDetailViewController.swift in Sources */,
