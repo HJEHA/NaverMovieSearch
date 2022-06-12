@@ -31,7 +31,7 @@ final class MovieSearchListViewController: UIViewController {
     
     // MARK: - ViewModel
     
-    private let viewModel = MovieSearchListViewModel()
+    var viewModel: MovieSearchListViewModel?
     private let disposeBag = DisposeBag()
         
     override func viewDidLoad() {
@@ -67,6 +67,10 @@ private extension MovieSearchListViewController {
         
         // MARK: - Output
         
+        guard let viewModel = viewModel else {
+            return
+        }
+        
         let output = viewModel.transform(input)
         output.movieInformationItem
             .asDriver(onErrorJustReturn: [])
@@ -79,11 +83,12 @@ private extension MovieSearchListViewController {
     func bindCollectionView() {
         movieSearchListView.movieListCollectionView.rx.itemSelected
             .subscribe(onNext: { [weak self] in
-                guard let self = self else { return }
-                
-                let item = self.dataSource?.itemIdentifier(for: $0)
-                
-                let detailViewModel = MovieDetailViewModel(movieTitle: item!.title, useCase: MovieDetailUseCase(movieRepository: self.viewModel.useCase.movieRepository))
+                guard let self = self,
+                      let movieTitle = self.dataSource?.itemIdentifier(for: $0)?.title
+                else {
+                    return
+                }
+                let detailViewModel = MovieDetailViewModel(movieTitle: movieTitle, useCase: MovieDetailUseCase(movieRepository: self.viewModel!.useCase.movieRepository))
                 
                 let detailViewController = MovieDetailViewController()
                 detailViewController.viewModel = detailViewModel
