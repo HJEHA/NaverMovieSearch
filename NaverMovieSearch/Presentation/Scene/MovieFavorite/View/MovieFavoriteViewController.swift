@@ -1,20 +1,15 @@
 //
-//  ViewController.swift
+//  MovieFavoriteViewController.swift
 //  NaverMovieSearch
 //
-//  Created by 황제하 on 2022/06/07.
+//  Created by 황제하 on 2022/06/13.
 //
 
 import UIKit
 
 import RxSwift
-import RxCocoa
 
-final class MovieSearchListViewController: UIViewController {
-    
-    // MARK: - Coordinator
-    
-    weak var coordinator: MovieSearchCoordinator?
+final class MovieFavoriteViewController: UIViewController {
     
     // MARK: - Collection View
     
@@ -27,42 +22,34 @@ final class MovieSearchListViewController: UIViewController {
     
     // MARK: - View
     
-    private let movieSearchListView = MovieSearchListView()
+    private let movieFavoriteListView = MovieFavoriteView()
     
     // MARK: - ViewModel
     
-    var viewModel: MovieSearchListViewModel?
+    private let viewModel = MovieFavoriteViewModel()
     private let disposeBag = DisposeBag()
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureTitle()
+        configureBackButton()
         
         configureMovieSearchListView()
         configureCollectionViewDataSource()
         bindViewModel()
         bindCollectionView()
-        bindFavoriteButton()
-        bindTapGesture()
-        
-        CoreDataMovieRepository().fetch()
-            .subscribe(onNext: {
-                $0.forEach {
-                    print($0.title)
-                }
-            })
-            .disposed(by: disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = false
     }
 }
 
 // MARK: - View Model Methods
 
-private extension MovieSearchListViewController {
+private extension MovieFavoriteViewController {
     
     // MARK: - Bind ViewModel
     
@@ -70,15 +57,11 @@ private extension MovieSearchListViewController {
         
         // MARK: - Input
                 
-        let input = MovieSearchListViewModel.Input(
-            movieTitle: movieSearchListView.movieTitleTextField.rx.text.asObservable()
+        let input = MovieFavoriteViewModel.Input(
+            
         )
         
         // MARK: - Output
-        
-        guard let viewModel = viewModel else {
-            return
-        }
         
         let output = viewModel.transform(input)
         output.movieInformationItem
@@ -89,26 +72,14 @@ private extension MovieSearchListViewController {
             .disposed(by: disposeBag)
     }
     
-    func bindFavoriteButton() {
-        movieSearchListView.favoriteButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                let movieFavoriteViewController = MovieFavoriteViewController()
-                
-                self?.navigationController?.show(movieFavoriteViewController, sender: nil)
-            })
-            .disposed(by: disposeBag)
-    }
-    
     func bindCollectionView() {
-        movieSearchListView.movieListCollectionView.rx.itemSelected
+        movieFavoriteListView.movieListCollectionView.rx.itemSelected
             .subscribe(onNext: { [weak self] in
                 guard let self = self,
                       let movieTitle = self.dataSource?.itemIdentifier(for: $0)?.title
                 else {
                     return
                 }
-                
-                self.coordinator?.showMovieDetailView(title: movieTitle)
             })
             .disposed(by: disposeBag)
     }
@@ -116,17 +87,34 @@ private extension MovieSearchListViewController {
 
 // MARK: - Configure View
 
-private extension MovieSearchListViewController {
+private extension MovieFavoriteViewController {
     func configureMovieSearchListView() {
         view.backgroundColor = .systemBackground
-        view.addSubview(movieSearchListView)
-        movieSearchListView.configureConstraint(view: view)
+        view.addSubview(movieFavoriteListView)
+        movieFavoriteListView.configureConstraint(view: view)
+    }
+    
+    func configureTitle() {
+        let titleView: UILabel = {
+            let label = UILabel()
+            label.text = "즐겨찾기 목록"
+            label.font = .preferredFont(forTextStyle: .title3).bold
+            
+            return label
+        }()
+        
+        navigationItem.titleView = titleView
+    }
+    
+    func configureBackButton() {
+        navigationController?.navigationBar.tintColor = .label
+        navigationController?.navigationBar.topItem?.title = String()
     }
 }
 
 // MARK: - Configure Collection View
 
-private extension MovieSearchListViewController {
+private extension MovieFavoriteViewController {
     func configureCollectionViewDataSource() {
         typealias CellRegistration = UICollectionView.CellRegistration<MovieListCellCollectionViewCell, MovieInformationItem>
         
@@ -134,7 +122,7 @@ private extension MovieSearchListViewController {
             cell.update(item: item)
         }
         
-        dataSource = DiffableDataSource(collectionView: movieSearchListView.movieListCollectionView) { collectionView, indexPath, item in
+        dataSource = DiffableDataSource(collectionView: movieFavoriteListView.movieListCollectionView) { collectionView, indexPath, item in
             return collectionView.dequeueConfiguredReusableCell(
                 using: coinListRegistration,
                 for: indexPath,
@@ -150,21 +138,5 @@ private extension MovieSearchListViewController {
         snapShot.appendItems(items, toSection: .main)
         
         dataSource?.apply(snapShot)
-    }
-}
-
-
-// MARK: - Keyboard
-extension MovieSearchListViewController {
-    private func bindTapGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: nil)
-        tapGesture.cancelsTouchesInView = false
-        view.addGestureRecognizer(tapGesture)
-        
-        tapGesture.rx.event
-            .subscribe(onNext: { [weak self] _ in
-                self?.view.endEditing(true)
-            })
-            .disposed(by: disposeBag)
     }
 }
