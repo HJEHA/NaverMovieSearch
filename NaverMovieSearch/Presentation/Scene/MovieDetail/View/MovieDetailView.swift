@@ -40,7 +40,7 @@ final class MovieDetailView: UIView {
     func update(item: MovieInformation) {
         movieInformationView.update(item: item.toItem())
         
-        guard let url = URL(string: item.pagelink) else {
+        guard let url = URL(string: item.pageLink) else {
             return
         }
         

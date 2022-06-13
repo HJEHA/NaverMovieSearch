@@ -48,7 +48,7 @@ final class MovieDetailViewModel: ViewModel {
                 return MovieInformation(
                     title: informaton.title,
                     posterURL: informaton.posterURL,
-                    pagelink: informaton.pagelink,
+                    pageLink: informaton.pageLink,
                     director: informaton.director,
                     actors: informaton.actors,
                     userRating: informaton.userRating,

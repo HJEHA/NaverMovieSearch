@@ -60,7 +60,7 @@ extension MovieSearchResponseDTO {
             return MovieInformation(
                 title: $0.title.replacingOccurrences(of: ["<b>", "</b>"], with: ""),
                 posterURL: $0.image,
-                pagelink: $0.link,
+                pageLink: $0.link,
                 director: director,
                 actors: actors,
                 userRating: $0.userRating,
