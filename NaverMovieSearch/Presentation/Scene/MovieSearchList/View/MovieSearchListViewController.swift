@@ -44,6 +44,8 @@ final class MovieSearchListViewController: UIViewController {
         bindFavoriteButton()
         bindTapGesture()
         
+//        CoreDataManager.shared.delete(request: MovieInfo.fetchRequest())
+        
         CoreDataMovieRepository().fetch()
             .subscribe(onNext: {
                 $0.forEach {
@@ -91,10 +93,9 @@ private extension MovieSearchListViewController {
     
     func bindFavoriteButton() {
         movieSearchListView.favoriteButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                let movieFavoriteViewController = MovieFavoriteViewController()
-                
-                self?.navigationController?.show(movieFavoriteViewController, sender: nil)
+            .withUnretained(self)
+            .subscribe(onNext: { (self, _) in
+                self.coordinator?.showMovieFavoriteView(self)
             })
             .disposed(by: disposeBag)
     }

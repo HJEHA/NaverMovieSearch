@@ -8,8 +8,7 @@
 import UIKit
 
 final class MovieSearchCoordinator: Coordinator {
-    
-    
+        
     // MARK: - Coordinator Property
     
     private weak var parentCoordinator: AppCoordinator?
@@ -41,5 +40,9 @@ final class MovieSearchCoordinator: Coordinator {
     
     func showMovieDetailView(title: String) {
         parentCoordinator?.showMovieDetailView(movieTitle: title)
+    }
+    
+    func showMovieFavoriteView(_ viewController: UIViewController) {
+        parentCoordinator?.presentMovieFavoriteView(viewController)
     }
 }

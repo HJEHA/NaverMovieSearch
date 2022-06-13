@@ -19,6 +19,17 @@ final class MovieDetailUseCase {
 
 extension MovieDetailUseCase {
     func fetch(movieTitle: String) -> Observable<MovieInformation> {
-        return movieRepository.fetchMovie(title: movieTitle)
+        let aa = CoreDataMovieRepository().fetch()
+            .map {
+                return $0.filter {
+                    $0.title == movieTitle
+                }
+            }
+            .filter { $0.first != nil }
+            .map { $0.first!.toDomain() }
+        
+        let dd = Observable.merge(movieRepository.fetchMovie(title: movieTitle), aa)
+        
+        return dd
     }
 }

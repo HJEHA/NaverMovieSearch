@@ -31,8 +31,8 @@ final class CoreDataMovieRepository {
         movieInto.title  = movieInformation.title
         movieInto.posterURL = movieInformation.posterURL
         movieInto.pageLink = movieInformation.pageLink
-        movieInto.director = movieInformation.director.joined(separator: ", ")
-        movieInto.actors = movieInformation.actors.joined(separator: ", ")
+        movieInto.director = movieInformation.director
+        movieInto.actors = movieInformation.actors
         movieInto.userRating = movieInformation.userRating
         movieInto.isFavorite = movieInformation.isFavorite
         

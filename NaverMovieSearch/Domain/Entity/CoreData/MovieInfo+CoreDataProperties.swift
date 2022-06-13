@@ -52,4 +52,16 @@ extension MovieInfo {
             isFavorite: isFavorite
         )
     }
+    
+    func toDomain() -> MovieInformation {
+        return MovieInformation(
+            title: title,
+            posterURL: posterURL,
+            pageLink: pageLink,
+            director: director,
+            actors: actors,
+            userRating: userRating,
+            isFavorite: isFavorite
+        )
+    }
 }

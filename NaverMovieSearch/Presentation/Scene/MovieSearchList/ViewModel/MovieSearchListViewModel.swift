@@ -53,8 +53,8 @@ final class MovieSearchListViewModel: ViewModel {
                     return MovieInformationItem(
                         title: $0.title,
                         posterURL: $0.posterURL,
-                        director: $0.director.joined(separator: ", "),
-                        actors: $0.actors.joined(separator: ", "),
+                        director: $0.director,
+                        actors: $0.actors,
                         userRating: $0.userRating,
                         isFavorite: $0.isFavorite
                     )

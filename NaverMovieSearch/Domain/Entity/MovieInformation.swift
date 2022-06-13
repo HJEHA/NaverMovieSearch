@@ -11,8 +11,8 @@ struct MovieInformation {
     let title: String
     let posterURL: String
     let pageLink: String
-    let director: [String]
-    let actors: [String]
+    let director: String
+    let actors: String
     let userRating: String
     var isFavorite: Bool
 }
@@ -22,8 +22,8 @@ extension MovieInformation {
         return MovieInformationItem(
             title: title,
             posterURL: posterURL,
-            director: director.joined(separator: ", "),
-            actors: actors.joined(separator: ", "),
+            director: director,
+            actors: actors,
             userRating: userRating,
             isFavorite: isFavorite
         )

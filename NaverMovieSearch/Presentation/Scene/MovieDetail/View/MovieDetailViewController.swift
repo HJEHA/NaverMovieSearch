@@ -32,6 +32,8 @@ final class MovieDetailViewController: UIViewController {
         configureMovieSearchListView()
         configureBackButton()
         bindViewModel()
+        
+        print("상세 화면")
     }
     
     override func viewWillAppear(_ animated: Bool) {

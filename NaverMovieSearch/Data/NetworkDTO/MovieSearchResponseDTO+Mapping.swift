@@ -54,8 +54,8 @@ extension MovieSearchResponseDTO {
 extension MovieSearchResponseDTO {
     func toDomain() -> [MovieInformation] {
         return movieInformations.map {
-            let director = $0.director.componentsNotEmpty(separatedBy: "|")
-            let actors = $0.actor.componentsNotEmpty(separatedBy: "|")
+            let director = $0.director.componentsNotEmpty(separatedBy: "|").joined(separator: ", ")
+            let actors = $0.actor.componentsNotEmpty(separatedBy: "|").joined(separator: ", ")
             
             return MovieInformation(
                 title: $0.title.replacingOccurrences(of: ["<b>", "</b>"], with: ""),

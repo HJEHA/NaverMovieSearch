@@ -55,7 +55,11 @@ final class MovieDetailViewModel: ViewModel {
                     isFavorite: isFavorite
                 )
                 
-                CoreDataMovieRepository().save(movieInformation: informaton)
+                if isFavorite {
+                    CoreDataMovieRepository().save(movieInformation: informaton)
+                } else {
+                    CoreDataMovieRepository().delete(title: informaton.title)
+                }
                 
                 return informaton
             }

@@ -11,6 +11,10 @@ import RxSwift
 
 final class MovieFavoriteViewController: UIViewController {
     
+    // MARK: - Coordinator
+    
+    weak var coordinator: MovieFavoriteCoordinator?
+    
     // MARK: - Collection View
     
     private enum Section {
@@ -80,6 +84,10 @@ private extension MovieFavoriteViewController {
                 else {
                     return
                 }
+                
+                print(movieTitle)
+                
+                self.coordinator?.showMovieDetailView(title: movieTitle)
             })
             .disposed(by: disposeBag)
     }

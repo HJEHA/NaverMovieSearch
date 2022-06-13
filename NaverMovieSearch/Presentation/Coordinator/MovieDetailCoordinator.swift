@@ -11,7 +11,7 @@ final class MovieDetailCoordinator: Coordinator {
     
     // MARK: - Coordinator Property
     
-    private weak var parentCoordinator: AppCoordinator?
+    private weak var parentCoordinator: Coordinator?
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     
@@ -23,7 +23,7 @@ final class MovieDetailCoordinator: Coordinator {
     init(
         movieTitle: String,
         movieRepository: MovieRepository,
-        parentCoordinator: AppCoordinator?,
+        parentCoordinator: Coordinator?,
         navigationController: UINavigationController = UINavigationController()
     ) {
         self.movieTitle = movieTitle

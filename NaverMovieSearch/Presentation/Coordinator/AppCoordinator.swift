@@ -16,7 +16,7 @@ final class AppCoordinator: Coordinator {
     
     // MARK: - Repository
     
-    private let movieRepository: MovieRepository
+    let movieRepository: MovieRepository
     
     init(
         movieRepository: MovieRepository = DefaultMovieRepository(),
@@ -51,12 +51,12 @@ final class AppCoordinator: Coordinator {
         movieDetailCoordinator.start()
     }
     
-    func removeChildCoordinator(_ child: Coordinator) {
-        for (index, coordinator) in childCoordinators.enumerated() {
-            if coordinator === child {
-                childCoordinators.remove(at: index)
-                break
-            }
-        }
+    func presentMovieFavoriteView(_ viewController: UIViewController) {
+        let movieFavoriteCoordinator = MovieFavoriteCoordinator(
+            parentCoordinator: self
+        )
+        childCoordinators.append(movieFavoriteCoordinator)
+        movieFavoriteCoordinator.start()
+        movieFavoriteCoordinator.present(viewController)
     }
 }
