@@ -40,3 +40,16 @@ extension MovieInfo {
 extension MovieInfo : Identifiable {
 
 }
+
+extension MovieInfo {
+    func toItem() -> MovieInformationItem {
+        return MovieInformationItem(
+            title: title,
+            posterURL: posterURL,
+            director: director,
+            actors: actors,
+            userRating: userRating,
+            isFavorite: isFavorite
+        )
+    }
+}
