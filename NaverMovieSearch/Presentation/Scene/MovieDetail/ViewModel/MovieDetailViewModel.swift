@@ -44,8 +44,8 @@ final class MovieDetailViewModel: ViewModel {
     
     func transform(_ input: Input) -> Output {
         let movieInformation = Observable.combineLatest(input.isFavorite, useCase.fetch(movieTitle: movieTitle))
-            .map { (isFavorite, informaton) in
-                return MovieInformation(
+            .map { (isFavorite, informaton) -> MovieInformation in
+                let informaton = MovieInformation(
                     title: informaton.title,
                     posterURL: informaton.posterURL,
                     pageLink: informaton.pageLink,
@@ -54,6 +54,10 @@ final class MovieDetailViewModel: ViewModel {
                     userRating: informaton.userRating,
                     isFavorite: isFavorite
                 )
+                
+                CoreDataMovieRepository().save(movieInformation: informaton)
+                
+                return informaton
             }
         
         return Output(

@@ -42,6 +42,16 @@ final class MovieSearchListViewController: UIViewController {
         bindViewModel()
         bindCollectionView()
         bindTapGesture()
+        
+        CoreDataMovieRepository().delete(title: "ㅇㅇㅇ")
+        
+        CoreDataMovieRepository().fetch()
+            .subscribe(onNext: {
+                $0.forEach {
+                    print($0.title)
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
