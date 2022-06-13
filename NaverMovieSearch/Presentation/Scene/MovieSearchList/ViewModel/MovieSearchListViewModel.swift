@@ -33,7 +33,7 @@ final class MovieSearchListViewModel: ViewModel {
     
     // MARK: - Properties
     
-    let useCase: MovieListUseCase
+    private let useCase: MovieListUseCase
     
     // MARK: - Initializer
     

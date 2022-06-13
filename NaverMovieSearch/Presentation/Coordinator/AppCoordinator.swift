@@ -16,9 +16,13 @@ final class AppCoordinator: Coordinator {
     
     // MARK: - Repository
     
-    let movieRepository: MovieRepository = DefaultMovieRepository()
+    private let movieRepository: MovieRepository
     
-    init(navigationController: UINavigationController = UINavigationController()) {
+    init(
+        movieRepository: MovieRepository = DefaultMovieRepository(),
+        navigationController: UINavigationController = UINavigationController()
+    ) {
+        self.movieRepository = movieRepository
         self.navigationController = navigationController
     }
     
