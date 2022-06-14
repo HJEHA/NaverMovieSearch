@@ -8,15 +8,25 @@
 import Foundation
 
 import RxSwift
+import RxRelay
 
 final class MovieFavoriteViewModel: ViewModel {
     
     // MARK: - Input
     
     final class Input {
+        let eventRelay: BehaviorRelay<Void>
+        let favoriteTitle: Observable<String>
         
+        init(
+            eventRelay: BehaviorRelay<Void>,
+            favoriteTitle: Observable<String>
+        ) {
+            self.eventRelay = eventRelay
+            self.favoriteTitle = favoriteTitle
+        }
     }
-    
+        
     // MARK: - Output
     
     final class Output {
@@ -30,6 +40,7 @@ final class MovieFavoriteViewModel: ViewModel {
     // MARK: - Properties
     
     private let useCase: MovieFavoriteUseCase
+    private var disposeBag = DisposeBag()
     
     // MARK: - Initializer
     
@@ -38,12 +49,23 @@ final class MovieFavoriteViewModel: ViewModel {
     }
     
     func transform(_ input: Input) -> Output {
-        let movieInfomationObservable = useCase.fetch()
+        let movieInfomationObservable = input.eventRelay
+            .withUnretained(self)
+            .flatMap { (self, _) -> Observable<[MovieInfo]> in
+                self.useCase.fetch()
+            }
             .map { informations in
                 return informations.map {
                     return $0.toItem()
                 }
             }
+        
+        input.favoriteTitle
+            .subscribe(onNext: { title in
+                CoreDataMovieRepository().delete(title: title)
+                input.eventRelay.accept(Void())
+            })
+            .disposed(by: disposeBag)
         
         return Output(movieInformationItem: movieInfomationObservable)
     }

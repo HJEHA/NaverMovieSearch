@@ -8,6 +8,8 @@
 import UIKit
 
 import RxSwift
+import RxCocoa
+import RxRelay
 
 final class MovieFavoriteViewController: UIViewController {
     
@@ -32,22 +34,24 @@ final class MovieFavoriteViewController: UIViewController {
     
     private let viewModel = MovieFavoriteViewModel()
     private let disposeBag = DisposeBag()
+    
+    let favoriteTitleRelay = PublishRelay<String>()
+    let eventRelay = BehaviorRelay<Void>(value: Void())
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTitle()
-        configureBackButton()
         
         configureMovieSearchListView()
         configureCollectionViewDataSource()
         bindViewModel()
         bindCollectionView()
+        bindBackButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.isNavigationBarHidden = false
+        navigationController?.isNavigationBarHidden = true
     }
 }
 
@@ -62,7 +66,8 @@ private extension MovieFavoriteViewController {
         // MARK: - Input
                 
         let input = MovieFavoriteViewModel.Input(
-            
+            eventRelay: eventRelay,
+            favoriteTitle: favoriteTitleRelay.asObservable()
         )
         
         // MARK: - Output
@@ -89,6 +94,19 @@ private extension MovieFavoriteViewController {
             })
             .disposed(by: disposeBag)
     }
+    
+    func bindCellFavoriteButton(title: String) {
+        favoriteTitleRelay.accept(title)
+    }
+    
+    func bindBackButton() {
+        movieFavoriteListView.closeButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { (self, _) in
+                self.coordinator?.dismiss()
+            })
+            .disposed(by: disposeBag)
+    }
 }
 
 // MARK: - Configure View
@@ -98,23 +116,6 @@ private extension MovieFavoriteViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(movieFavoriteListView)
         movieFavoriteListView.configureConstraint(view: view)
-    }
-    
-    func configureTitle() {
-        let titleView: UILabel = {
-            let label = UILabel()
-            label.text = "즐겨찾기 목록"
-            label.font = .preferredFont(forTextStyle: .title3).bold
-            
-            return label
-        }()
-        
-        navigationItem.titleView = titleView
-    }
-    
-    func configureBackButton() {
-        navigationController?.navigationBar.tintColor = .label
-        navigationController?.navigationBar.topItem?.title = String()
     }
 }
 
@@ -126,6 +127,9 @@ private extension MovieFavoriteViewController {
         
         let coinListRegistration = CellRegistration { cell, indexPath, item in
             cell.update(item: item)
+            cell.favoriteAction = { [weak self] in
+                self?.bindCellFavoriteButton(title: item.title)
+            }
         }
         
         dataSource = DiffableDataSource(collectionView: movieFavoriteListView.movieListCollectionView) { collectionView, indexPath, item in

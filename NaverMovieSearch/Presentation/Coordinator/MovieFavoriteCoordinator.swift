@@ -32,7 +32,12 @@ final class MovieFavoriteCoordinator: Coordinator {
     }
     
     func present(_ viewController: UIViewController) {
+        navigationController.modalPresentationStyle = .fullScreen
         viewController.present(navigationController, animated: true)
+    }
+    
+    func dismiss() {
+        navigationController.dismiss(animated: true)
     }
     
     func showMovieDetailView(title: String) {
@@ -43,7 +48,6 @@ final class MovieFavoriteCoordinator: Coordinator {
             navigationController: navigationController
         )
         
-        print(title)
         childCoordinators.append(movieDetailCoordinator)
         movieDetailCoordinator.start()
     }

@@ -107,7 +107,7 @@ final class MovieSearchListView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            movieListCollectionView.topAnchor.constraint(equalTo: movieTitleTextField.bottomAnchor),
+            movieListCollectionView.topAnchor.constraint(equalTo: movieTitleTextField.bottomAnchor, constant: 4),
             movieListCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
             movieListCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             movieListCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor)

@@ -48,8 +48,6 @@ final class MovieSearchListViewController: UIViewController {
         bindFavoriteButton()
         bindTapGesture()
         
-//        CoreDataManager.shared.delete(request: MovieInfo.fetchRequest())
-        
         CoreDataMovieRepository().fetch()
             .subscribe(onNext: {
                 $0.forEach {
@@ -63,6 +61,7 @@ final class MovieSearchListViewController: UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.isNavigationBarHidden = true
+        eventRelay.accept(Void())
     }
 }
 

@@ -38,7 +38,7 @@ final class CoreDataMovieRepository {
         movieInto.director = movieInformation.director
         movieInto.actors = movieInformation.actors
         movieInto.userRating = movieInformation.userRating
-        movieInto.isFavorite = movieInformation.isFavorite
+        movieInto.isFavorite = true
         
         CoreDataManager.shared.saveContext()
     }
