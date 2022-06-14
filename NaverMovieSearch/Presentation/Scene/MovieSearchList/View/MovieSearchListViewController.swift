@@ -33,6 +33,10 @@ final class MovieSearchListViewController: UIViewController {
     
     var viewModel: MovieSearchListViewModel?
     private let disposeBag = DisposeBag()
+    
+    let isFavoriteRelay = PublishRelay<Bool>()
+    let favoriteTitleRelay = PublishRelay<String>()
+    let eventRelay = BehaviorRelay<Void>(value: Void())
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +77,10 @@ private extension MovieSearchListViewController {
         // MARK: - Input
                 
         let input = MovieSearchListViewModel.Input(
-            movieTitle: movieSearchListView.movieTitleTextField.rx.text.asObservable()
+            movieTitle: movieSearchListView.movieTitleTextField.rx.text.asObservable(),
+            eventRelay: eventRelay,
+            isFavorite: isFavoriteRelay.asObservable(),
+            favoriteTitle: favoriteTitleRelay.asObservable()
         )
         
         // MARK: - Output
@@ -113,6 +120,11 @@ private extension MovieSearchListViewController {
             })
             .disposed(by: disposeBag)
     }
+    
+    func bindCellFavoriteButton(isFavorite: Bool, title: String) {
+        isFavoriteRelay.accept(isFavorite)
+        favoriteTitleRelay.accept(title)
+    }
 }
 
 // MARK: - Configure View
@@ -133,6 +145,9 @@ private extension MovieSearchListViewController {
         
         let coinListRegistration = CellRegistration { cell, indexPath, item in
             cell.update(item: item)
+            cell.favoriteAction = { [weak self] in
+                self?.bindCellFavoriteButton(isFavorite: !item.isFavorite, title: item.title)
+            }
         }
         
         dataSource = DiffableDataSource(collectionView: movieSearchListView.movieListCollectionView) { collectionView, indexPath, item in

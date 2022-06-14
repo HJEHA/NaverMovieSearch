@@ -11,6 +11,7 @@ import RxSwift
 
 final class MovieListUseCase {
     let movieRepository: MovieRepository
+    let coreDataMovieRepository = CoreDataMovieRepository()
     
     init(movieRepository: MovieRepository = DefaultMovieRepository()) {
         self.movieRepository = movieRepository
@@ -18,7 +19,15 @@ final class MovieListUseCase {
 }
 
 extension MovieListUseCase {
-    func fetch(movieTitle: String) -> Observable<[MovieInformation]> {
-        return movieRepository.fetchMovies(title: movieTitle)
+    func fetchMovies(title: String) -> Observable<[MovieInformation]> {
+        return movieRepository.fetchMovies(title: title)
+    }
+    
+    func fetchMovie(title: String) -> Observable<MovieInformation> {
+        return movieRepository.fetchMovie(title: title)
+    }
+    
+    func fetchFavoriteMovies() -> Observable<[MovieInfo]> {
+        return coreDataMovieRepository.fetch()
     }
 }

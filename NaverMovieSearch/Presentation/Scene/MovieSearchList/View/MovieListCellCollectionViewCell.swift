@@ -17,12 +17,16 @@ final class MovieListCellCollectionViewCell: UICollectionViewCell {
         return infomationView
     }()
     
+    var favoriteAction: (() -> Void)?
+    
     // MARK: - Initializer
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureSubviews()
         configureSubViewsConstraint()
+        
+        movieInformationView.favoriteButton.addTarget(self, action: #selector(favoriteButtonAction), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -30,6 +34,8 @@ final class MovieListCellCollectionViewCell: UICollectionViewCell {
         
         configureSubviews()
         configureSubViewsConstraint()
+        
+        movieInformationView.favoriteButton.addTarget(self, action: #selector(favoriteButtonAction), for: .touchUpInside)
     }
     
     // MARK: - Methods
@@ -53,5 +59,9 @@ final class MovieListCellCollectionViewCell: UICollectionViewCell {
             centerXAnchor.constraint(equalTo: movieInformationView.centerXAnchor),
             centerYAnchor.constraint(equalTo: movieInformationView.centerYAnchor)
         ])
+    }
+    
+    @objc private func favoriteButtonAction() {
+        favoriteAction?()
     }
 }
