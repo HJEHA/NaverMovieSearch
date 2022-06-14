@@ -83,7 +83,7 @@ final class MovieSearchListViewModel: ViewModel {
                         userRating: $0.userRating,
                         isFavorite: favoriteTitle.contains($0.title)
                     )
-                }.sorted { $0.title > $1.title }
+                }.sorted { $0.title < $1.title }
             }
         
         let favoriteInfo = input.favoriteTitle

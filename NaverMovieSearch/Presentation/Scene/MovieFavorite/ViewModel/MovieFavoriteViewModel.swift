@@ -57,7 +57,7 @@ final class MovieFavoriteViewModel: ViewModel {
             .map { informations in
                 return informations.map {
                     return $0.toItem()
-                }
+                }.sorted { $0.title < $1.title }
             }
         
         input.favoriteTitle
