@@ -27,6 +27,10 @@ final class CoreDataMovieRepository {
     }
     
     func save(movieInformation: MovieInformation) {
+        guard exist(title: movieInformation.title) == false else {
+            return
+        }
+        
         let movieInto = MovieInfo(context: CoreDataManager.shared.context)
         movieInto.title  = movieInformation.title
         movieInto.posterURL = movieInformation.posterURL
@@ -37,5 +41,11 @@ final class CoreDataMovieRepository {
         movieInto.isFavorite = movieInformation.isFavorite
         
         CoreDataManager.shared.saveContext()
+    }
+    
+    func exist(title: String) -> Bool {
+        let request = MovieInfo.fetchRequest(title: title)
+        
+        return !CoreDataManager.shared.fetch(request: request).isEmpty
     }
 }

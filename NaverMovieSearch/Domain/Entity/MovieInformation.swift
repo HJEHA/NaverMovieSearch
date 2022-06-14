@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MovieInformation {
+struct MovieInformation: Equatable {
     let title: String
     let posterURL: String
     let pageLink: String

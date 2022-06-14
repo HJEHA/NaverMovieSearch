@@ -11,6 +11,7 @@ import RxSwift
 
 final class MovieDetailUseCase {
     let movieRepository: MovieRepository
+    let coreDataMovieRepository = CoreDataMovieRepository()
     
     init(movieRepository: MovieRepository = DefaultMovieRepository()) {
         self.movieRepository = movieRepository
@@ -19,7 +20,7 @@ final class MovieDetailUseCase {
 
 extension MovieDetailUseCase {
     func fetch(movieTitle: String) -> Observable<MovieInformation> {
-        let aa = CoreDataMovieRepository().fetch()
+        let coreDataObservable = coreDataMovieRepository.fetch()
             .map {
                 return $0.filter {
                     $0.title == movieTitle
@@ -28,8 +29,18 @@ extension MovieDetailUseCase {
             .filter { $0.first != nil }
             .map { $0.first!.toDomain() }
         
-        let dd = Observable.merge(movieRepository.fetchMovie(title: movieTitle), aa)
-        
-        return dd
+        return Observable.merge(movieRepository.fetchMovie(title: movieTitle), coreDataObservable)
+    }
+    
+    func delete(title: String) {
+        coreDataMovieRepository.delete(title: title)
+    }
+    
+    func save(movieInformation: MovieInformation) {
+        coreDataMovieRepository.save(movieInformation: movieInformation)
+    }
+    
+    func exist(title: String) -> Bool {
+        return coreDataMovieRepository.exist(title: title)
     }
 }

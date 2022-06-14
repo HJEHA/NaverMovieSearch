@@ -85,8 +85,6 @@ private extension MovieFavoriteViewController {
                     return
                 }
                 
-                print(movieTitle)
-                
                 self.coordinator?.showMovieDetailView(title: movieTitle)
             })
             .disposed(by: disposeBag)

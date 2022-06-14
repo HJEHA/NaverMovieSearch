@@ -32,8 +32,6 @@ final class MovieDetailViewController: UIViewController {
         configureMovieSearchListView()
         configureBackButton()
         bindViewModel()
-        
-        print("상세 화면")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,12 +58,16 @@ private extension MovieDetailViewController {
     
     func bindViewModel() {
         
+        guard let viewModel = viewModel else {
+            return
+        }
+        
         // MARK: - Input
         
-        let isFavoriteRelay = BehaviorRelay<Bool>(value: false)
+        let isFavoriteRelay = BehaviorRelay<Bool>(value: viewModel.isFavorite)
         
         movieDetailView.movieInformationView.favoriteButton.rx.tap
-            .scan(movieDetailView.movieInformationView.favoriteButton.isSelected) { lastState, newState in !lastState }
+            .scan(viewModel.isFavorite) { lastState, newState in !lastState }
             .subscribe(onNext: {
                 isFavoriteRelay.accept($0)
             })
@@ -76,13 +78,10 @@ private extension MovieDetailViewController {
         )
         
         // MARK: - Output
-        
-        guard let viewModel = viewModel else {
-            return
-        }
-        
+                
         let output = viewModel.transform(input)
         output.movieInformation
+            .distinctUntilChanged()
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
                 self?.update(item: $0)

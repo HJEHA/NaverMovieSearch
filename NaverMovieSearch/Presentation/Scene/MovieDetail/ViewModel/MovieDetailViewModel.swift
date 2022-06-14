@@ -33,6 +33,7 @@ final class MovieDetailViewModel: ViewModel {
     
     // MARK: - Properties
     private let movieTitle: String
+    let isFavorite: Bool
     private let useCase: MovieDetailUseCase
     
     // MARK: - Initializer
@@ -40,11 +41,12 @@ final class MovieDetailViewModel: ViewModel {
     init(movieTitle: String, useCase: MovieDetailUseCase = MovieDetailUseCase()) {
         self.movieTitle = movieTitle
         self.useCase = useCase
+        self.isFavorite = useCase.exist(title: movieTitle)
     }
     
     func transform(_ input: Input) -> Output {
         let movieInformation = Observable.combineLatest(input.isFavorite, useCase.fetch(movieTitle: movieTitle))
-            .map { (isFavorite, informaton) -> MovieInformation in
+            .map { [weak self] (isFavorite, informaton) -> MovieInformation in
                 let informaton = MovieInformation(
                     title: informaton.title,
                     posterURL: informaton.posterURL,
@@ -56,9 +58,9 @@ final class MovieDetailViewModel: ViewModel {
                 )
                 
                 if isFavorite {
-                    CoreDataMovieRepository().save(movieInformation: informaton)
+                    self?.useCase.save(movieInformation: informaton)
                 } else {
-                    CoreDataMovieRepository().delete(title: informaton.title)
+                    self?.useCase.delete(title: informaton.title)
                 }
                 
                 return informaton
