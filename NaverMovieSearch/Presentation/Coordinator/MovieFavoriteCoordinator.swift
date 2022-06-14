@@ -38,6 +38,7 @@ final class MovieFavoriteCoordinator: Coordinator {
     
     func dismiss() {
         navigationController.dismiss(animated: true)
+        parentCoordinator?.removeChildCoordinator(self)
     }
     
     func showMovieDetailView(title: String) {

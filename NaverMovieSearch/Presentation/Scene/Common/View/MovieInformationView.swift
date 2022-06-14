@@ -152,7 +152,11 @@ private extension UIImageView {
         DispatchQueue.global().async {
             guard let imageURL = URL(string: key),
                   let imageData = try? Data(contentsOf: imageURL),
-                  let loadedImage = UIImage(data: imageData) else {
+                  let loadedImage = UIImage(data: imageData)
+            else {
+                DispatchQueue.main.async {
+                    self.image = UIImage(systemName: "xmark.icloud.fill")
+                }
                 return
             }
             ImageCacheManager.shared.setObject(loadedImage, forKey: cacheKey)
