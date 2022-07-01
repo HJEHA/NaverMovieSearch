@@ -5,41 +5,40 @@
 
 ### 디렉토리 구조
 ```
-├── NaverMovieSearch
-│   ├── Application
-│   ├── Resources
-│   ├── Extension
-│   ├── Utility
-│   ├── Presentation
-│   │   ├── Coordinator
-│   │   │   └── Protocol
-│   │   ├── Scene
-│   │   │   ├── Common
-│   │   │   │   └── View
-│   │   │   ├── MovieSearchList
-│   │   │   │   ├── ViewModel
-│   │   │   │   └── View
-│   │   │   ├── Detail
-│   │   │   │   ├── ViewModel
-│   │   │   │   └── View
-│   │   │   └── Favorites
-│   │   │       ├── ViewModel
-│   │   │       └── View
-│   ├── Domain
-│   │   ├── UseCase
-│   │   ├── Entity
-│   │   │   └── CoreData
-│   │   ├── Interfase
-│   │   │   ├── Repository
-│   │   │   └── MovieSearchList
-│   ├── Data
-│   │   ├── Repository
-│   │   ├── Network
-│   │   │   ├── API
-│   │   │   └── HTTP
-│   │   │       └── Error
-│   │   └── NetworkDTO
-└────────────────────────────── 
+└── NaverMovieSearch
+    ├── Application
+    ├── Resources
+    ├── Extension
+    ├── Utility
+    ├── Presentation
+    │   ├── Coordinator
+    │   │   └── Protocol
+    │   └── Scene
+    │       ├── Common
+    │       │   └── View
+    │       ├── MovieSearchList
+    │       │   ├── ViewModel
+    │       │   └── View
+    │       ├── Detail
+    │       │   ├── ViewModel
+    │       │   └── View
+    │       └── Favorites
+    │           ├── ViewModel
+    │           └── View
+    ├── Domain
+    │   ├── UseCase
+    │   ├── Entity
+    │   │   └── CoreData
+    │   └── Interfase
+    │       ├── Repository
+    │       └── MovieSearchList
+    └── Data
+        ├── Repository
+        ├── Network
+        │   ├── API
+        │   └── HTTP
+        │       └── Error
+        └── NetworkDTO
 ```
 
 ### 구동 화면
