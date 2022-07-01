@@ -3,6 +3,45 @@
 ### 개발 환경
 ![](https://img.shields.io/badge/Xcode-13.3-blue) ![](https://img.shields.io/badge/Swift-5.6-orange) ![](https://img.shields.io/badge/RxSwift-6.5.0-red) ![](https://img.shields.io/badge/SPM-0.6.0-red)
 
+### 디렉토리 구조
+```
+├── NaverMovieSearch
+│   ├── Application
+│   ├── Resources
+│   ├── Extension
+│   ├── Utility
+│   ├── Presentation
+│   │   ├── Coordinator
+│   │   │   └── Protocol
+│   │   ├── Scene
+│   │   │   ├── Common
+│   │   │   │   └── View
+│   │   │   ├── MovieSearchList
+│   │   │   │   ├── ViewModel
+│   │   │   │   └── View
+│   │   │   ├── Detail
+│   │   │   │   ├── ViewModel
+│   │   │   │   └── View
+│   │   │   └── Favorites
+│   │   │       ├── ViewModel
+│   │   │       └── View
+│   ├── Domain
+│   │   ├── UseCase
+│   │   ├── Entity
+│   │   │   └── CoreData
+│   │   ├── Interfase
+│   │   │   ├── Repository
+│   │   │   └── MovieSearchList
+│   ├── Data
+│   │   ├── Repository
+│   │   ├── Network
+│   │   │   ├── API
+│   │   │   └── HTTP
+│   │   │       └── Error
+│   │   └── NetworkDTO
+└────────────────────────────── 
+```
+
 ### 구동 화면
 |검색 화면|상세 화면|즐겨찾기 화면|
 |---|---|---|
