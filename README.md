@@ -30,8 +30,7 @@
     │   ├── Entity
     │   │   └── CoreData
     │   └── Interfase
-    │       ├── Repository
-    │       └── MovieSearchList
+    │       └── Repository
     └── Data
         ├── Repository
         ├── Network
